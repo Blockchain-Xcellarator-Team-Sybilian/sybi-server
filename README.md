@@ -14,7 +14,7 @@ Server application of Educado. Made with ❤️ for UnionBank Blockchain Xceller
 Clone the repository.
 
 ```bash
-git clone https://github.com/xcellerator-sybilian/educado-server.git
+git clone https://github.com/xcellerator-sybilian/educado-server.git && cd educado-server
 ```
 
 Install dependencies.
@@ -27,13 +27,13 @@ npm install -g @adonisjs/cli
 Pull PostgreSQL Docker image.
 
 ```bash
-docker pull stephenafamo/adonisjs:1.0.0
+docker pull postgres:12.0
 ```
 
-Create PostgresSQL Docker container.
+Create PostgreSQL Docker container.
 
 ```bash
-docker run --rm --name postgres-server -d -p 5432:5432 -v $HOME/.docker/volumes/postgres:/var/lib/postgresql/data -e POSTGRES_PASSWORD=secret postgres
+docker run --rm --name postgres-server -d -p 5432:5432 -v $HOME/.docker/volumes/postgres:/var/lib/postgresql/data -e POSTGRES_PASSWORD=secret postgres:12.0
 ```
 
 Pull Adonis Docker image.
@@ -61,12 +61,6 @@ docker network connect educado-network postgres-server
 docker network connect educado-network educado-server
 ```
 
-Get the IP address of both containers.
-
-```bash
-docker network inspect educado-network
-```
-
 Generate .env file.
 
 ```bash
@@ -77,6 +71,12 @@ Generate app key.
 
 ```bash
 adonis key:generate
+```
+
+Get the IPv4 address of both containers.
+
+```bash
+docker network inspect educado-network
 ```
 
 Update environment variables.
