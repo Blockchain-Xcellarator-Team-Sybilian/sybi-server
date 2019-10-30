@@ -1,6 +1,6 @@
 # Educado Server
 
-Server application of Educado. Made with ❤️ for UnionBank Blockchain Xcellerator Experts Program.
+Server application of Educado. Made with ❤️ for UnionBank Blockchain Xcellerator Experts Program case study.
 
 ## Prerequisites
 
