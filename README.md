@@ -30,7 +30,7 @@ Pull PostgreSQL Docker image.
 docker pull postgres:12.0
 ```
 
-Create PostgreSQL Docker container.
+Create PostgreSQL Docker container. Mount $HOME/.docker/volumes/postgres on the host machine to the container side volume path /var/lib/postgresql/data. This ensures that postgres data persists even after the container is removed. Feel free to update this path if you have your own customized volume path.
 
 ```bash
 docker run --rm --name postgres-server -d -p 5432:5432 -v $HOME/.docker/volumes/postgres:/var/lib/postgresql/data -e POSTGRES_PASSWORD=secret postgres:12.0
@@ -42,7 +42,8 @@ Pull Adonis Docker image.
 docker pull stephenafamo/adonisjs:1.0.0
 ```
 
-Create Adonis Docker container.
+Create Adonis Docker container. Mount $HOME/Projects/Educado/educado-server on the host machine to the container side path /var/www. Feel free to update this path if you have your own customized project path.
+
 
 ```bash
 docker run --rm --name educado-server -d -p 3333:3333 -v $HOME/Projects/Educado/educado-server:/var/www stephenafamo/adonisjs:1.0.0
