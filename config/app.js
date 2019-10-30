@@ -17,6 +17,7 @@ module.exports = {
   */
 
   name: Env.get('APP_NAME', 'AdonisJs'),
+  version: Env.get('APP_VERSION'),
 
   /*
   |--------------------------------------------------------------------------
