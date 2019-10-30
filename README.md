@@ -4,9 +4,10 @@ Server application of Educado. Made with ❤️ for UnionBank Blockchain Xceller
 
 ## Prerequisites
 
-- Git
 - Docker
-- Node.js
+- Node.js >= 8.0.0
+- npm >= 3.0.0
+- git
 
 ## Setup
 
@@ -20,6 +21,7 @@ Install dependencies.
 
 ```bash
 npm install
+npm install -g @adonisjs/cli
 ```
 
 Pull PostgreSQL Docker image.
@@ -74,7 +76,7 @@ cp .env.example .env
 Generate app key.
 
 ```bash
-docker exec -it educado-server adonis key:generate
+adonis key:generate
 ```
 
 Update environment variables.
@@ -96,5 +98,11 @@ DB_DATABASE=DATABASE_NAME
 Run migrations.
 
 ```bash
-docker exec -it educado-server adonis migration:run
+adonis migration:run
+```
+
+Run tests.
+
+```bash
+adonis test
 ```
