@@ -16,7 +16,7 @@ Clone the repository.
 git clone https://github.com/xcellerator-sybilian/educado-server.git
 ```
 
-Install dependecies.
+Install dependencies.
 
 ```bash
 npm install
