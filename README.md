@@ -49,7 +49,7 @@ Create Adonis Docker container. Mount `$HOME/Projects/Educado/educado-server` on
 docker run --rm --name educado-server -d -p 3333:3333 -v $HOME/Projects/Educado/educado-server:/var/www stephenafamo/adonisjs:1.0.0
 ```
 
-Create Docker network.
+Create Docker bridge network.
 
 ```bash
 docker network create -d bridge educado-network
