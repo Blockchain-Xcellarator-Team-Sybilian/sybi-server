@@ -55,7 +55,7 @@ Create Docker network.
 docker network create -d bridge educado-network
 ```
 
-Add containers to Docker network.
+Add containers to the Docker bridge network.
 
 ```bash
 docker network connect educado-network postgres-server
