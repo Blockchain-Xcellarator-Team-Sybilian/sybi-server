@@ -38,7 +38,7 @@ docker pull postgres:12.0
 Create PostgreSQL Docker container. Mount `$HOME/.docker/volumes/postgres` on the host machine to the container side volume path `/var/lib/postgresql/data`. This ensures that postgres data persists even after the container is removed. Update this path if you have your own customized volume path.
 
 ```bash
-docker run --restart=always --net educado-network --ip 172.18.0.11 --name educado-database-server -d -p 5432:5432 -v $HOME/.docker/volumes/postgres:/var/lib/postgresql/data -e POSTGRES_USER=root POSTGRES_PASSWORD=secret POSTGRES_DB=educado postgres:12.0
+docker run --restart=always --net educado-network --ip 172.18.0.3 --name educado-database-server -d -p 5432:5432 -v $HOME/.docker/volumes/postgres:/var/lib/postgresql/data -e POSTGRES_USER=root POSTGRES_PASSWORD=secret POSTGRES_DB=educado postgres:12.0
 ```
 
 Pull Adonis Docker image.
@@ -51,7 +51,7 @@ Create Adonis Docker container. Mount `$HOME/Projects/Educado/educado-server` on
 
 
 ```bash
-docker run --restart=always --net educado-network --ip 172.18.0.12 --name educado-api-server -d -p 3333:3333 -v $HOME/Projects/Educado/educado-server:/var/www stephenafamo/adonisjs:1.0.0
+docker run --restart=always --net educado-network --ip 172.18.0.4 --name educado-api-server -d -p 3333:3333 -v $HOME/Projects/Educado/educado-server:/var/www stephenafamo/adonisjs:1.0.0
 ```
 
 Generate .env file.
