@@ -26,7 +26,7 @@ npm install
 Create Docker network.
 
 ```bash
-docker network create --driver --subnet=172.18.0.0/16 educado-network
+docker network create --driver bridge --subnet 172.18.0.0/16 --gateway 172.18.0.1 educado-network
 ```
 
 Pull PostgreSQL Docker image.
@@ -64,12 +64,6 @@ Generate app key.
 
 ```bash
 adonis key:generate
-```
-
-Get the IPv4 address of both containers.
-
-```bash
-docker network inspect educado-network
 ```
 
 Update environment variables.
