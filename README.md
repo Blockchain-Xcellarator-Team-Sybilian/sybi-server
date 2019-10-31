@@ -21,7 +21,6 @@ Install dependencies.
 
 ```bash
 npm install
-npm install -g @adonisjs/cli
 ```
 
 Pull PostgreSQL Docker image.
