@@ -4,7 +4,7 @@ const Logger = use('Logger')
 const Config = use('Config')
 
 class HomeController {
-    async index ({request}) {
+    async index ({ request }) {
         // Log request
         Logger.info('Home request: %j', {
             url: request.url()

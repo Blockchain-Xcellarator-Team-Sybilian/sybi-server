@@ -7,14 +7,14 @@ const Token = use('App/Models/Token');
 class AuthController {
 
     async register({ request, response }) {
-        // Get request data
-        const requestData = request.only(['username', 'password', 'type'])
+        // Get request body
+        const requestBody = request.only(['username', 'password', 'type'])
 
         // Instantiate a new User object
         let user = new User()
-        user.username = requestData.username
-        user.password = requestData.password
-        user.type = requestData.type
+        user.username = requestBody.username
+        user.password = requestBody.password
+        user.type = requestBody.type
 
         // Save user to database
         await user.save()
