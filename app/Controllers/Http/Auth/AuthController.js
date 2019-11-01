@@ -6,11 +6,11 @@ const UnauthorizedLoginException = use('App/Exceptions/UnauthorizedLoginExceptio
 
 class AuthController {
   async register({ request, response }) {
-    // Log request
-    Logger.info('Register user request', { request })
-
     // Get request body
     const requestBody = request.only(['username', 'password', 'type'])
+
+    // Log request
+    Logger.info('Register user request', { requestBody })
 
     // Instantiate a new User object
     let user = new User()
@@ -32,11 +32,11 @@ class AuthController {
   }
 
   async login({ request, auth, response }) {
-    // Log request
-    Logger.info('Login user request', { request })
-
     // Get request body
     const requestBody = request.only(['username', 'password'])
+
+    // Log request
+    Logger.info('Login user request', { requestBody })
 
     try {
       // Validate user credentials 
