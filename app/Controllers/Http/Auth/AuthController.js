@@ -2,11 +2,14 @@
 
 const Logger = use('Logger')
 const User = use('App/Models/User');
-const Token = use('App/Models/Token');
+const UnauthorizedLoginException = use('App/Exceptions/UnauthorizedLoginException')
 
 class AuthController {
 
     async register({ request, response }) {
+        // Log request
+        Logger.info('Register user request', { request })
+
         // Get request body
         const requestBody = request.only(['username', 'password', 'type'])
 
@@ -19,11 +22,8 @@ class AuthController {
         // Save user to database
         await user.save()
 
-        // Log request
-        Logger.info('Register user request', { user })
-
         const responseStatus = 200
-        const responseCode = 'SUCCESS_USER_CREATED'
+        const responseCode = 'SUCCESS_USER_REGISTERED'
         const responseData = { user }
 
         return response.status(responseStatus).json({
@@ -33,28 +33,30 @@ class AuthController {
     }
 
     async login({ request, auth, response }) {
-        // Get user credentials
-        const username = request.input("username")
-        const password = request.input("password")
+        // Log request
+        Logger.info('Login user request', { request })
+
+        // Get request body
+        const requestBody = request.only(['username', 'password'])
 
         try {
-          if (await auth.attempt(username, password)) {
+          // Validate user credentials 
+          if (await auth.attempt(requestBody.username, requestBody.password)) {
             // Get user from database
-            let user = await User.findBy('username', username)
+            let user = await User.findBy('username', requestBody.username)
             let token = await auth.generate(user)
 
-            // Log request
-            Logger.info('Login user request', {token})
+            const responseStatus = 200
+            const responseCode = 'SUCCESS_USER_LOGGED_IN'
+            const responseData = { token }
 
-            return response.json({ token })
+            return response.status(responseStatus).json({
+              code: responseCode,
+              data: responseData
+            })
           }
-        }
-
-        catch (e) {
-          // Log error
-          Logger.info('Login user request', {e})
-
-          return response.json({ message: 'User not registered.' })
+        } catch (e) {
+          throw new UnauthorizedLoginException()
         }
     }
 
