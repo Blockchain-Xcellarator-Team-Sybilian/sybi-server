@@ -13,5 +13,5 @@ test('should be able to register user', async ({ client }) => {
     })
     .end()
 
-  // response.assertStatus(200)
+  response.assertStatus(200)
 })
