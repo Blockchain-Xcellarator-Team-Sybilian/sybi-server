@@ -6,28 +6,33 @@ const Token = use('App/Models/Token');
 
 class AuthController {
 
-    async register({request, auth, response}) {
-        // Get user credentials
-        const username = request.input("username")
-        const password = request.input("password")
-        const type = request.input("type")
+    async register({ request, response }) {
+        // Get request data
+        const requestData = request.only(['username', 'password', 'type'])
 
         // Instantiate a new User object
         let user = new User()
-        user.username = username
-        user.password = password
-        user.type = type
+        user.username = requestData.username
+        user.password = requestData.password
+        user.type = requestData.type
 
         // Save user to database
         await user.save()
 
         // Log request
-        Logger.info('Register user request', {user})
+        Logger.info('Register user request', { user })
 
-        return response.json({user})
+        const responseStatus = 200
+        const responseCode = 'SUCCESS_USER_CREATED'
+        const responseData = { user }
+
+        return response.status(responseStatus).json({
+          code: responseCode,
+          data: responseData
+        })
     }
 
-    async login({request, auth, response}) {
+    async login({ request, auth, response }) {
         // Get user credentials
         const username = request.input("username")
         const password = request.input("password")
@@ -41,7 +46,7 @@ class AuthController {
             // Log request
             Logger.info('Login user request', {token})
 
-            return response.json({token})
+            return response.json({ token })
           }
         }
 
@@ -49,7 +54,7 @@ class AuthController {
           // Log error
           Logger.info('Login user request', {e})
 
-          return response.json({message: 'User not registered.'})
+          return response.json({ message: 'User not registered.' })
         }
     }
 

@@ -21,4 +21,4 @@ Route.get('/', 'HomeController.index')
 
 // Auth
 Route.post('/auth/register', 'Auth/AuthController.register').validator('Auth/RegisterUser')
-Route.post('/auth/login', 'AuthController.login').validator('LoginUser')
+Route.post('/auth/login', 'Auth/AuthController.login')
