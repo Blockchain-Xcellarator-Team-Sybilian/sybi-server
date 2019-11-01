@@ -21,7 +21,7 @@ class AuthController {
         // Save user to database
         await user.save()
 
-        // Log user object
+        // Log request
         Logger.info('Register user request', {user})
 
         return response.json({user})
@@ -38,11 +38,17 @@ class AuthController {
             let user = await User.findBy('username', username)
             let token = await auth.generate(user)
 
+            // Log request
+            Logger.info('Login user request', {token})
+
             return response.json({token})
           }
         }
 
         catch (e) {
+          // Log error
+          Logger.info('Login user request', {e})
+
           return response.json({message: 'User not registered.'})
         }
     }
