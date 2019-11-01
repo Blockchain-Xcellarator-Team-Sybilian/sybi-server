@@ -8,7 +8,7 @@ class UnauthorizedLoginException extends LogicalException {
     const responseCode = 'ERROR_UNAUTHORIZED'
     const responseData = {
       errors: [{
-        title: 'exists',
+        title: 'exist',
         detail: 'User does not exist.',
         source: {
           pointer: null
