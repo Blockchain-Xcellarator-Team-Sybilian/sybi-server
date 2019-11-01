@@ -2,35 +2,29 @@
 
 const Logger = use('Logger')
 const User = use('App/Models/User');
+const Token = use('App/Models/Token');
 
 class AuthController {
 
     async register({request, auth, response}) {
-      
-        Logger.info('TEST')
-        return null
-
         // Get user credentials
         const username = request.input("username")
         const password = request.input("password")
+        const type = request.input("type")
 
         // Instantiate a new User object
         let user = new User()
         user.username = username
         user.password = password
+        user.type = type
 
         // Save user to database
-        user = await user.save()
+        await user.save()
 
-        Logger.info({ user })
+        // Log user object
+        Logger.info('Register user request', {user})
 
-        // Generate token
-        let token = await auth.generate(user)
-
-        // Assign token to user
-        Object.assign(user, token)
-
-        return response.json({ user, token })
+        return response.json({user})
     }
 
     async login({request, auth, response}) {
@@ -44,10 +38,7 @@ class AuthController {
             let user = await User.findBy('username', username)
             let token = await auth.generate(user)
 
-            // Assign token to user
-            Object.assign(user, token)
-
-            return response.json({"user":user, "token": token})
+            return response.json({token})
           }
         }
 
