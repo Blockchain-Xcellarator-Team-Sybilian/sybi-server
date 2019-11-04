@@ -9,15 +9,15 @@ class UserRepository {
   }
 
   async create (requestBody) {
-    let newUser = new this.user
+    let user = new this.user
 
-    newUser.username = requestBody.username
-    newUser.password = requestBody.password
-    newUser.type = requestBody.type
+    user.username = requestBody.username
+    user.password = requestBody.password
+    user.type = requestBody.type
 
-    await newUser.save()
+    await user.save()
 
-    return newUser
+    return user
   }
 
   async read (requestBody) {
