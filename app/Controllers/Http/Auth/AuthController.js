@@ -2,6 +2,7 @@
 
 const Logger = use('Logger')
 const User = use('App/Models/User');
+const Helpers = use('Educado/Helpers')
 const UnauthorizedLoginException = use('App/Exceptions/UnauthorizedLoginException')
 
 class AuthController {
@@ -9,8 +10,10 @@ class AuthController {
     // Get request body
     const requestBody = request.only(['username', 'password', 'type'])
 
-    // Log request
+    // Log request body
     Logger.info('Register user request', { requestBody })
+
+    // Process
 
     // Instantiate a new User object
     let user = new User()
@@ -21,21 +24,25 @@ class AuthController {
     // Save user to database
     await user.save()
 
+    // Format response body
     const responseStatus = 200
     const responseCode = 'SUCCESS_USER_REGISTERED'
     const responseData = { user }
 
-    return response.status(responseStatus).json({
-      code: responseCode,
-      data: responseData
-    })
+    const responseBody = Helpers.formatResponse(response, responseStatus, responseCode, responseData)
+
+    // Log request body
+    Logger.info('Register user request', { requestBody })
+
+    // Return response body
+    return responseBody
   }
 
   async login({ request, auth, response }) {
     // Get request body
     const requestBody = request.only(['username', 'password'])
 
-    // Log request
+    // Log request body
     Logger.info('Login user request', { requestBody })
 
     try {
@@ -48,11 +55,9 @@ class AuthController {
         const responseStatus = 200
         const responseCode = 'SUCCESS_USER_LOGGED_IN'
         const responseData = { token }
+        const responseBody = Helpers.formatResponse(response, responseStatus, responseCode, responseData)
 
-        return response.status(responseStatus).json({
-          code: responseCode,
-          data: responseData
-        })
+        return responseBody
       }
     } catch (e) {
       throw new UnauthorizedLoginException()
