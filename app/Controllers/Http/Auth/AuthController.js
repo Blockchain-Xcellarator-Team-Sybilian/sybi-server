@@ -2,32 +2,30 @@
 
 const Logger = use('Logger')
 const Config = use('Config')
-const User = use('App/Models/User');
 const Helpers = use('Educado/Helpers')
+const UserRepository = use('App/Repositories/UserRepository')
 const UnauthorizedException = use('App/Exceptions/UnauthorizedException')
 
 class AuthController {
-  async register ({ request, response }) {
+
+  constructor () {
+    this.userRepository = UserRepository
+  }
+
+  async register ({ request, response, transform }) {
     // Get request body
     const requestBody = request.only(['username', 'password', 'type'])
 
     // Log request body
     Logger.info('Register user request', { requestBody })
 
-    // Process
-    // Instantiate a new User object
-    let user = new User()
-    user.username = requestBody.username
-    user.password = requestBody.password
-    user.type = requestBody.type
-    // Save user to database
-    await user.save()
-
     // Set response body
-    const responseStatus = Config.get('response.status.success')
-    const responseCode = Config.get('response.code.success.user.registered')
-    const responseData = { user }
-    const responseBody = Helpers.formatResponse(response, responseStatus, responseCode, responseData)
+    const responseBody = Helpers.formatResponse(
+      response, // Response object
+      Config.get('response.status.success'), // Response status
+      Config.get('response.code.success.user.registered'), // Response code
+      transform.item(this.userRepository.create(requestBody), 'UserTransformer') // Response data
+    )
 
     // Log response body
     Logger.info('Register user response', { responseBody })
