@@ -20,5 +20,5 @@ const Route = use('Route')
 Route.get('/', 'HomeController.index')
 
 // Auth
-Route.post('/auth/register', 'Auth/AuthController.register').validator('Auth/RegisterUser')
-Route.post('/auth/login', 'Auth/AuthController.login').validator('Auth/LoginUser')
+Route.post('/auth/register', 'Auth/AuthController.register').validator('Auth/RegisterUserValidator')
+Route.post('/auth/login', 'Auth/AuthController.login').validator('Auth/LoginUserValidator')
