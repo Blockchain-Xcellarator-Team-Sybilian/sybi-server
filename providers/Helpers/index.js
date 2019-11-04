@@ -4,7 +4,7 @@
 
 class Helpers {
   async formatResponse (response, responseStatus, responseCode, responseData) {
-    return response.status(responseStatus).json({
+    return await response.status(responseStatus).json({
       code: responseCode,
       data: responseData
     })

@@ -12,7 +12,7 @@ module.exports = {
   code: {
     success: {
       user: {
-        registered: 'SUCCESS_USER_REGISTERED',
+        register: 'SUCCESS_USER_REGISTERED',
         login: 'SUCCESS_USER_LOGGED_IN'
       }
     },

@@ -20,12 +20,11 @@ class AuthController {
     Logger.info('Register user request', { requestBody })
 
     // Set response body
-    const responseBody = Helpers.formatResponse(
-      response, // Response object
-      Config.get('response.status.success'), // Response status
-      Config.get('response.code.success.user.registered'), // Response code
-      transform.item(this.userRepository.create(requestBody), 'UserTransformer') // Response data
-    )
+    let user = await transform.item(this.userRepository.create(requestBody), 'UserTransformer')
+    const responseStatus = Config.get('response.status.success')
+    const responseCode = Config.get('response.code.success.user.register')
+    const responseData = { user }
+    const responseBody = Helpers.formatResponse(response, responseStatus, responseCode, responseData)
 
     // Log response body
     Logger.info('Register user response', { responseBody })
@@ -41,14 +40,10 @@ class AuthController {
     Logger.info('Login user request', { requestBody })
 
     try {
-      // Validate user credentials 
       if (await auth.attempt(requestBody.username, requestBody.password)) {
-        // Process
-        // Get user from database
-        let user = await User.findBy('username', requestBody.username)
-        let token = await auth.generate(user)
-
         // Set response body
+        let user = await this.userRepository.read(requestBody)
+        let token = await auth.generate(user)
         const responseStatus = Config.get('response.status.success')
         const responseCode = Config.get('response.code.success.user.login')
         const responseData = { token }

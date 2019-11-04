@@ -19,9 +19,15 @@ class UserRepository {
 
     return newUser
   }
+
+  async read (requestBody) {
+    let user = await this.user.findBy('username', requestBody.username)
+
+    return user
+  }
 }
 
-ioc.singleton ('App/Repositories/UserRepository', function (app) {
+ioc.bind ('App/Repositories/UserRepository', function (app) {
   return new UserRepository(app.use('App/Models/User'))
 })
 
