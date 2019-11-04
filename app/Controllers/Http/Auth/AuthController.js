@@ -1,9 +1,10 @@
 'use strict'
 
 const Logger = use('Logger')
+const Config = use('Config')
 const User = use('App/Models/User');
 const Helpers = use('Educado/Helpers')
-const UnauthorizedLoginException = use('App/Exceptions/UnauthorizedLoginException')
+const UnauthorizedException = use('App/Exceptions/UnauthorizedException')
 
 class AuthController {
   async register ({ request, response }) {
@@ -14,27 +15,23 @@ class AuthController {
     Logger.info('Register user request', { requestBody })
 
     // Process
-
     // Instantiate a new User object
     let user = new User()
     user.username = requestBody.username
     user.password = requestBody.password
     user.type = requestBody.type
-
     // Save user to database
     await user.save()
 
-    // Format response body
-    const responseStatus = 200
-    const responseCode = 'SUCCESS_USER_REGISTERED'
+    // Set response body
+    const responseStatus = Config.get('response.status.success')
+    const responseCode = Config.get('response.code.success.user.registered')
     const responseData = { user }
-
     const responseBody = Helpers.formatResponse(response, responseStatus, responseCode, responseData)
 
-    // Log request body
-    Logger.info('Register user request', { requestBody })
+    // Log response body
+    Logger.info('Register user response', { responseBody })
 
-    // Return response body
     return responseBody
   }
 
@@ -48,19 +45,24 @@ class AuthController {
     try {
       // Validate user credentials 
       if (await auth.attempt(requestBody.username, requestBody.password)) {
+        // Process
         // Get user from database
         let user = await User.findBy('username', requestBody.username)
         let token = await auth.generate(user)
 
-        const responseStatus = 200
-        const responseCode = 'SUCCESS_USER_LOGGED_IN'
+        // Set response body
+        const responseStatus = Config.get('response.status.success')
+        const responseCode = Config.get('response.code.success.user.login')
         const responseData = { token }
         const responseBody = Helpers.formatResponse(response, responseStatus, responseCode, responseData)
 
+        // Log response body
+        Logger.info('Login user response', { responseBody })
+
         return responseBody
       }
-    } catch (e) {
-      throw new UnauthorizedLoginException()
+    } catch (exception) {
+      throw new UnauthorizedException()
     }
   }
 }
