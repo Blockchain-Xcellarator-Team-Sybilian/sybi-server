@@ -2,7 +2,7 @@
   "name": "educado-api-server",
   "version": "0.0.0",
   "adonis-version": "4.1.0",
-  "description": "Adonisjs boilerplate for API server with pre-configured JWT",
+  "description": "Educado API server. Made with <3 for UnionBank Blockchain Xcellerator Experts Program case study.",
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
