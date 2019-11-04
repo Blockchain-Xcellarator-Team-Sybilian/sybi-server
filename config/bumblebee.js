@@ -18,7 +18,7 @@ module.exports = {
    * representation.
    * Currently supported: 'plain', 'data'
    */
-  serializer: 'data',
+  serializer: 'plain',
 
   /*
    * When a transformer is reffered to by its name only, Bumblebee will try to
