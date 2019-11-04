@@ -6,7 +6,7 @@ const Helpers = use('Educado/Helpers')
 const UnauthorizedLoginException = use('App/Exceptions/UnauthorizedLoginException')
 
 class AuthController {
-  async register({ request, response }) {
+  async register ({ request, response }) {
     // Get request body
     const requestBody = request.only(['username', 'password', 'type'])
 
@@ -38,7 +38,7 @@ class AuthController {
     return responseBody
   }
 
-  async login({ request, auth, response }) {
+  async login ({ request, auth, response }) {
     // Get request body
     const requestBody = request.only(['username', 'password'])
 
