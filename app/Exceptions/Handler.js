@@ -31,7 +31,7 @@ class ExceptionHandler extends BaseExceptionHandler {
       const responseStatus = Config.get('response.status.unauthorized')
       const responseCode = Config.get('response.code.error.unauthorized')
       return ResponseHelper.formatResponse(response, responseStatus, responseCode)
-    }  else if (error.name == 'BadRequestError') {
+    } else if (error.name == 'BadRequestError') {
       const responseStatus = Config.get('response.status.bad_request')
       const responseCode = Config.get('response.code.error.bad_request')
       return ResponseHelper.formatResponse(response, responseStatus, responseCode)
