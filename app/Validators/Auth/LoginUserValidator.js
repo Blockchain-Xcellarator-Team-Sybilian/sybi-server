@@ -1,7 +1,7 @@
 'use strict'
 
 const { formatters } = use('Validator')
-const ValidationException = use('App/Exceptions/ValidationException')
+const BadRequestException = use('App/Exceptions/BadRequestException')
 
 class LoginUserValidator {
   get validateAll () {
@@ -27,7 +27,7 @@ class LoginUserValidator {
   }
 
   async fails (message) {
-    throw new ValidationException(message)
+    throw new BadRequestException(message)
   }
 }
 

@@ -4,7 +4,7 @@ const Config = use('Config')
 const Helpers = use('Educado/Helpers')
 const { LogicalException } = require('@adonisjs/generic-exceptions')
 
-class ValidationException extends LogicalException {
+class BadRequestException extends LogicalException {
   handle (error, { response }) {
     const responseStatus = Config.get('response.status.bad_request')
     const responseCode = Config.get('response.code.error.bad_request')
@@ -14,4 +14,4 @@ class ValidationException extends LogicalException {
   }
 }
 
-module.exports = ValidationException
+module.exports = BadRequestException
