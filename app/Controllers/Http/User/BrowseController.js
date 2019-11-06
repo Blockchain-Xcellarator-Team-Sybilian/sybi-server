@@ -10,15 +10,8 @@ class BrowseController {
     this.userRepository = UserRepository
   }
   
-  /**
-   * Show a list of all users.
-   * GET contacts
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   */
   async browse ({ response, transform }) {
+    // Process
     let users = await transform.collection(this.userRepository.browse(), 'UserTransformer')
 
     // Set response body
