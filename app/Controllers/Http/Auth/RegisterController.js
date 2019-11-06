@@ -10,12 +10,12 @@ class RegisterController {
     this.userRepository = UserRepository
   }
 
-  async register ({ request, response, transform }) {
+  async register ({ request, response }) {
     // Get request body
     const requestBody = request.only(['username', 'password', 'type'])
 
     // Process
-    let user = await transform.item(this.userRepository.add(requestBody), 'UserTransformer')
+    let user = await this.userRepository.add(requestBody)
 
     // Set response body
     const responseStatus = Config.get('response.status.success')
