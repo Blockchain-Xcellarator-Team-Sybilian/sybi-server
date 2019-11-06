@@ -13,9 +13,16 @@ module.exports = {
   // Response codes
   code: {
     success: {
-      auth: {
-        register: 'REGISTER',
-        login: 'LOG_IN'
+      register: {
+        student: 'REGISTER_STUDENT',
+        guarantor: 'REGISTER_GUARANTOR',
+        school: 'REGISTER_SCHOOL',
+        lender: 'REGISTER_LENDER'
+      },
+      token: {
+        request: 'REQUEST_TOKEN',
+        refresh: 'REFRESH_TOKEN',
+        revoke: 'REVOKE_TOKEN'
       },
       user: {
         browse: 'BROWSE_USERS',

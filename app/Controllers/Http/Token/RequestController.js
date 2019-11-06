@@ -5,8 +5,8 @@ const ResponseHelper = use('ResponseHelper')
 const UserRepository = use('UserRepository')
 const UnauthorizedLoginException = use('App/Exceptions/UnauthorizedLoginException')
 
-class LoginController {
-  async login ({ request, auth, response }) {
+class RequestController {
+  async request ({ request, auth, response }) {
     // Get request body
     const requestBody = request.only(['username', 'password'])
 
@@ -18,7 +18,7 @@ class LoginController {
 
         // Set response body
         const responseStatus = Config.get('response.status.success')
-        const responseCode = Config.get('response.code.success.auth.login')
+        const responseCode = Config.get('response.code.success.token.request')
         const responseData = { token }
         const responseBody = ResponseHelper.formatResponse(response, responseStatus, responseCode, responseData)
 
@@ -30,4 +30,4 @@ class LoginController {
   }
 }
 
-module.exports = LoginController
+module.exports = RequestController

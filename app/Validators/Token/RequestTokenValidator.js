@@ -3,7 +3,7 @@
 const { formatters } = use('Validator')
 const ValidationException = use('App/Exceptions/ValidationException')
 
-class LoginUserValidator {
+class RequestTokenValidator {
   get validateAll () {
     return true
   }
@@ -31,4 +31,4 @@ class LoginUserValidator {
   }
 }
 
-module.exports = LoginUserValidator
+module.exports = RequestTokenValidator

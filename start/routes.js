@@ -19,13 +19,23 @@ const Route = use('Route')
 // Home
 Route.get('/', 'HomeController.index')
 
-/** Auth */
+/** Register */
 Route.group(() => {
-  // Register
-  Route.post('/register', 'RegisterController.register').validator('Auth/RegisterUserValidator')
-  // Login
-  Route.post('/login', 'LoginController.login').validator('Auth/LoginUserValidator')
-}).namespace('Auth').prefix('auth')
+  // Student
+  Route.post('/student', 'StudentController.student')
+  // Guarantor
+  Route.post('/guarantor', 'GuarantorController.guarantor')
+  // Lender
+  Route.post('/school', 'SchoolController.school')
+  // Lender
+  Route.post('/lender', 'LenderController.lender')
+}).namespace('Register').prefix('register')
+
+/** Token */
+Route.group(() => {
+  // Request
+  Route.post('/request', 'RequestController.request').validator('Token/RequestTokenValidator')
+}).namespace('Token').prefix('token')
 
 /** Users */
 Route.group(() => {
@@ -39,4 +49,4 @@ Route.group(() => {
   Route.post('/', 'AddController.add').validator('User/AddUserValidator')
   // Delete user
   Route.delete('/:id', 'DeleteController.delete')
-}).namespace('User').prefix('users')
+}).middleware('auth').namespace('User').prefix('users')
