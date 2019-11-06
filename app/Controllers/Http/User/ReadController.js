@@ -10,7 +10,7 @@ class ReadController {
     this.userRepository = UserRepository
   }
 
-  async read ({ params, response, transform }) {
+  async read ({ response, params, transform }) {
     // Get request body
     const userId = params.id
     
