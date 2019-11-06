@@ -5,16 +5,12 @@ const ResponseHelper = use('ResponseHelper')
 const UserRepository = use('UserRepository')
 
 class DeleteController {
-  constructor () {
-    this.userRepository = UserRepository
-  }
-
   async delete ({ response, params }) {
     // Get request body
     const userId = params.id
     
     // Process
-    await this.userRepository.delete(userId)
+    await UserRepository.delete(userId)
 
     // Set response body
     const responseStatus = Config.get('response.status.success')

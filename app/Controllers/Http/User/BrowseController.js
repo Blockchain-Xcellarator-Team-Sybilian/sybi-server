@@ -5,13 +5,9 @@ const ResponseHelper = use('ResponseHelper')
 const UserRepository = use('UserRepository')
 
 class BrowseController {
-  constructor () {
-    this.userRepository = UserRepository
-  }
-  
   async browse ({ response, transform }) {
     // Process
-    let users = await transform.collection(this.userRepository.browse(), 'UserTransformer')
+    let users = await transform.collection(UserRepository.browse(), 'UserTransformer')
 
     if (users === undefined || users.length == 0) {
       users = null

@@ -5,16 +5,12 @@ const ResponseHelper = use('ResponseHelper')
 const UserRepository = use('UserRepository')
 
 class AddController {
-  constructor () {
-    this.userRepository = UserRepository
-  }
-
   async add ({ request, response, transform }) {
     // Get request body
     const userDetails = request.only(['username', 'password', 'type'])
     
     // Process
-    let user = await transform.item(this.userRepository.add(userDetails), 'UserTransformer')
+    let user = await transform.item(UserRepository.add(userDetails), 'UserTransformer')
 
     // Set response body
     const responseStatus = Config.get('response.status.success')
