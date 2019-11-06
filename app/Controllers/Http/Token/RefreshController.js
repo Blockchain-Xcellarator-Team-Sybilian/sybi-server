@@ -2,7 +2,7 @@
 
 const Config = use('Config')
 const ResponseHelper = use('ResponseHelper')
-const UnauthorizedLoginException = use('App/Exceptions/UnauthorizedLoginException')
+const UnauthorizedException = use('App/Exceptions/UnauthorizedException')
 
 class RefreshController {
   async refresh ({ request, auth, response }) {
@@ -21,7 +21,7 @@ class RefreshController {
 
       return responseBody
     } catch (exception) {
-      throw new UnauthorizedLoginException
+      throw new UnauthorizedException
     }
   }
 }
