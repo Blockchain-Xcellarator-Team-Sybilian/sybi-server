@@ -54,6 +54,13 @@ class UserRepository {
   }
 
   async delete (userId) {
+    let user = await this.user.findBy('id', userId)
+
+    if (user == null) {
+      throw new UserNotFoundException()
+    }
+
+    await user.delete()
   }
 }
 
