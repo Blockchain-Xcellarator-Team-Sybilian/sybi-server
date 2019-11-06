@@ -22,6 +22,7 @@ const providers = [
   '@adonisjs/validator/providers/ValidatorProvider',
   'adonis-bumblebee/providers/BumblebeeProvider',
   // Custom providers
+  path.join(__dirname, '..', 'providers', 'RepositoryProvider'),
   path.join(__dirname, '..', 'providers', 'HelperProvider')
 ]
 
@@ -52,6 +53,7 @@ const aceProviders = [
 |
 */
 const aliases = {
+  UserRepository: 'App/Repositories/UserRepository',
   ResponseHelper: 'App/Helpers/ResponseHelper'
 }
 

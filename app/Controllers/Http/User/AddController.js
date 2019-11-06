@@ -2,7 +2,7 @@
 
 const Config = use('Config')
 const ResponseHelper = use('ResponseHelper')
-const UserRepository = use('App/Repositories/UserRepository')
+const UserRepository = use('UserRepository')
 
 class AddController {
   constructor () {

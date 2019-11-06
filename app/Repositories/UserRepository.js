@@ -1,8 +1,5 @@
 'use strict'
 
-const { ioc } = require('@adonisjs/fold')
-const UserNotFoundException = use('App/Exceptions/UserNotFoundException')
-
 class UserRepository {
 
   constructor (user) {
@@ -16,21 +13,13 @@ class UserRepository {
   }
 
   async read (userId) {
-    let user = await this.user.findBy('id', userId)
-
-    if (user === null) {
-      throw new UserNotFoundException()
-    }
+    let user = await this.user.findByOrFail('id', userId)
 
     return user
   }
 
   async edit (userId, userDetails) {
-    let user = await this.user.findBy('id', userId)
-
-    if (user === null) {
-      throw new UserNotFoundException()
-    }
+    let user = await this.user.findByOrFail('id', userId)
 
     user.username = userDetails.username
     user.password = userDetails.password
@@ -54,18 +43,10 @@ class UserRepository {
   }
 
   async delete (userId) {
-    let user = await this.user.findBy('id', userId)
-
-    if (user === null) {
-      throw new UserNotFoundException()
-    }
+    let user = await this.user.findByOrFail('id', userId)
 
     await user.delete()
   }
 }
 
-ioc.bind ('App/Repositories/UserRepository', function (app) {
-  return new UserRepository(app.use('App/Models/User'))
-})
-
-module.exports = ioc.use('App/Repositories/UserRepository')
+module.exports = UserRepository
