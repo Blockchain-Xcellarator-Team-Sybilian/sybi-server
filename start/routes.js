@@ -20,11 +20,23 @@ const Route = use('Route')
 Route.get('/', 'HomeController.index')
 
 /** Auth */
-// Register
-Route.post('/auth/register', 'Auth/RegisterController.register').validator('Auth/RegisterUserValidator')
-// Login
-Route.post('/auth/login', 'Auth/LoginController.login').validator('Auth/LoginUserValidator')
+Route.group(() => {
+  // Register
+  Route.post('/register', 'RegisterController.register').validator('Auth/RegisterUserValidator')
+  // Login
+  Route.post('/login', 'LoginController.login').validator('Auth/LoginUserValidator')
+}).namespace('Auth').prefix('auth')
 
 /** Users */
-// Browse users
-Route.get('/users', 'User/BrowseController.browse')
+Route.group(() => {
+  // Browse users
+  Route.get('/', 'BrowseController.browse')
+  // Read user
+  Route.get('/:id', 'ReadController.read')
+  // Edit user
+  Route.put('/:id', 'EditController.edit')
+  // Add user
+  Route.post('/', 'AddController.add')
+  // Delete user
+  Route.delete('/:id', 'DeleteController.delete')
+}).namespace('User').prefix('users')
