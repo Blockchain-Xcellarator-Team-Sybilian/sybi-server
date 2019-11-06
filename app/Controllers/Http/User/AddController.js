@@ -3,22 +3,27 @@
 const Config = use('Config')
 const ResponseHelper = use('ResponseHelper')
 const UserRepository = use('UserRepository')
+const ServerErrorException = use('App/Exceptions/ServerErrorException')
 
 class AddController {
   async add ({ request, response, transform }) {
     // Get request body
     const userDetails = request.only(['username', 'password', 'type'])
     
-    // Process
-    let user = await transform.item(UserRepository.add(userDetails), 'UserTransformer')
+    try {
+      // Process
+      let user = await transform.item(UserRepository.add(userDetails), 'UserTransformer')
 
-    // Set response body
-    const responseStatus = Config.get('response.status.success')
-    const responseCode = Config.get('response.code.success.user.add')
-    const responseData = { user }
-    const responseBody = ResponseHelper.formatResponse(response, responseStatus, responseCode, responseData)
+      // Set response body
+      const responseStatus = Config.get('response.status.success')
+      const responseCode = Config.get('response.code.success.user.add')
+      const responseData = { user }
+      const responseBody = ResponseHelper.formatResponse(response, responseStatus, responseCode, responseData)
 
-    return responseBody
+      return responseBody
+    } catch (exception) {
+      throw new ServerErrorException
+    }
   }
 }
 

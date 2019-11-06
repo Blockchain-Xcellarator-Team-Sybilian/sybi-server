@@ -3,6 +3,7 @@
 const Config = use('Config')
 const ResponseHelper = use('ResponseHelper')
 const UserRepository = use('UserRepository')
+const ServerErrorException = use('App/Exceptions/ServerErrorException')
 const RecordNotFoundException = use('App/Exceptions/RecordNotFoundException')
 
 class DeleteController {
@@ -21,7 +22,10 @@ class DeleteController {
 
       return responseBody
     } catch (exception) {
-      throw new RecordNotFoundException
+      if (exception.name == 'ModelNotFoundException') {
+        throw new RecordNotFoundException
+      }
+      throw new ServerErrorException
     }
   }
 }

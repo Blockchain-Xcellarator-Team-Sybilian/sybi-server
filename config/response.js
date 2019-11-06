@@ -6,28 +6,30 @@ module.exports = {
       success: 200,
       bad_request: 400,
       unauthorized: 401,
-      not_found: 404
+      not_found: 404,
+      server_error: 500
   },
 
   // Response codes
   code: {
     success: {
       auth: {
-        register: 'SUCCESS_REGISTER_USER',
-        login: 'SUCCESS_LOG_IN_USER'
+        register: 'REGISTER',
+        login: 'LOG_IN'
       },
       user: {
-        browse: 'SUCCESS_BROWSE_USERS',
-        read: 'SUCCESS_READ_USER',
-        edit: 'SUCCESS_EDIT_USER',
-        add: 'SUCCESS_ADD_USER',
-        delete: 'SUCCESS_DELETE_USER'
+        browse: 'BROWSE_USERS',
+        read: 'READ_USER',
+        edit: 'EDIT_USER',
+        add: 'ADD_USER',
+        delete: 'DELETE_USER'
       }
     },
     error: {
-      bad_request: 'ERROR_BAD_REQUEST',
-      unauthorized: 'ERROR_UNAUTHORIZED',
-      record_not_found: 'ERROR_RECORD_NOT_FOUND'
+      bad_request: 'BAD_REQUEST',
+      unauthorized: 'UNAUTHORIZED',
+      record_not_found: 'RECORD_NOT_FOUND',
+      server_error: 'INTERNAL_SERVER_ERROR'
     }
   }
 }
