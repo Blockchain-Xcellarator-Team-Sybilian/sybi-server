@@ -18,6 +18,12 @@ class UserRepository {
     return user
   }
 
+  async readByUsername (username) {
+    let user = await this.user.findByOrFail('username', username)
+
+    return user
+  }
+
   async edit (userId, userDetails) {
     let user = await this.user.findByOrFail('id', userId)
 

@@ -13,7 +13,7 @@ class LoginController {
     try {
       if (await auth.attempt(requestBody.username, requestBody.password)) {
         // Process
-        let user = await UserRepository.read(requestBody)
+        let user = await UserRepository.readByUsername(requestBody.username)
         let token = await auth.generate(user)
 
         // Set response body
