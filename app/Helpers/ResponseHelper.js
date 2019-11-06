@@ -1,7 +1,5 @@
 'use strict'
 
-// Create global helper functions here
-
 class ResponseHelper {
   async formatResponse (response, responseStatus, responseCode, responseData = null) {
     return await response.status(responseStatus).json({
