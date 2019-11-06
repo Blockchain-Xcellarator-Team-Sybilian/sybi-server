@@ -18,7 +18,7 @@ class UserRepository {
   async read (userId) {
     let user = await this.user.findBy('id', userId)
 
-    if (user == null) {
+    if (user === null) {
       throw new UserNotFoundException()
     }
 
@@ -28,7 +28,7 @@ class UserRepository {
   async edit (userId, userDetails) {
     let user = await this.user.findBy('id', userId)
 
-    if (user == null) {
+    if (user === null) {
       throw new UserNotFoundException()
     }
 
@@ -56,7 +56,7 @@ class UserRepository {
   async delete (userId) {
     let user = await this.user.findBy('id', userId)
 
-    if (user == null) {
+    if (user === null) {
       throw new UserNotFoundException()
     }
 

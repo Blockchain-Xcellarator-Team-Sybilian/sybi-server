@@ -1,7 +1,7 @@
 'use strict'
 
 const Config = use('Config')
-const Helpers = use('Educado/Helpers')
+const ResponseHelper = use('ResponseHelper')
 const { LogicalException } = require('@adonisjs/generic-exceptions')
 
 class UserNotFoundException extends LogicalException {
@@ -10,7 +10,7 @@ class UserNotFoundException extends LogicalException {
     const responseCode = Config.get('response.code.error.user_not_found')
     const responseData = error.message
     
-    Helpers.formatResponse(response, responseStatus, responseCode, responseData)
+    ResponseHelper.formatResponse(response, responseStatus, responseCode, responseData)
   }
 }
 

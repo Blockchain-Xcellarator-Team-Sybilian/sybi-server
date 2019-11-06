@@ -1,7 +1,7 @@
 'use strict'
 
 const Config = use('Config')
-const Helpers = use('Educado/Helpers')
+const ResponseHelper = use('ResponseHelper')
 const UserRepository = use('App/Repositories/UserRepository')
 
 class BrowseController {
@@ -13,11 +13,15 @@ class BrowseController {
     // Process
     let users = await transform.collection(this.userRepository.browse(), 'UserTransformer')
 
+    if (users === undefined || users.length == 0) {
+      users = null
+    }
+
     // Set response body
     const responseStatus = Config.get('response.status.success')
     const responseCode = Config.get('response.code.success.user.browse')
     const responseData = users
-    const responseBody = Helpers.formatResponse(response, responseStatus, responseCode, responseData)
+    const responseBody = ResponseHelper.formatResponse(response, responseStatus, responseCode, responseData)
 
     return responseBody
   }

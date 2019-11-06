@@ -1,7 +1,7 @@
 'use strict'
 
 const Config = use('Config')
-const Helpers = use('Educado/Helpers')
+const ResponseHelper = use('ResponseHelper')
 const UserRepository = use('App/Repositories/UserRepository')
 
 class DeleteController {
@@ -19,7 +19,7 @@ class DeleteController {
     // Set response body
     const responseStatus = Config.get('response.status.success')
     const responseCode = Config.get('response.code.success.user.delete')
-    const responseBody = Helpers.formatResponse(response, responseStatus, responseCode)
+    const responseBody = ResponseHelper.formatResponse(response, responseStatus, responseCode)
 
     return responseBody
   }

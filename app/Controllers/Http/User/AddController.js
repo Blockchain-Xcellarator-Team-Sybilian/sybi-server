@@ -1,7 +1,7 @@
 'use strict'
 
 const Config = use('Config')
-const Helpers = use('Educado/Helpers')
+const ResponseHelper = use('ResponseHelper')
 const UserRepository = use('App/Repositories/UserRepository')
 
 class AddController {
@@ -20,7 +20,7 @@ class AddController {
     const responseStatus = Config.get('response.status.success')
     const responseCode = Config.get('response.code.success.user.add')
     const responseData = { user }
-    const responseBody = Helpers.formatResponse(response, responseStatus, responseCode, responseData)
+    const responseBody = ResponseHelper.formatResponse(response, responseStatus, responseCode, responseData)
 
     return responseBody
   }

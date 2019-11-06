@@ -2,7 +2,7 @@
 
 // Create global helper functions here
 
-class Helpers {
+class ResponseHelper {
   async formatResponse (response, responseStatus, responseCode, responseData = null) {
     return await response.status(responseStatus).json({
       code: responseCode,
@@ -11,4 +11,4 @@ class Helpers {
   }
 }
   
-module.exports = Helpers
+module.exports = ResponseHelper
