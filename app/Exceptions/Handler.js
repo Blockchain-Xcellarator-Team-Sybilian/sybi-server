@@ -41,9 +41,7 @@ class ExceptionHandler extends BaseExceptionHandler {
       return ResponseHelper.formatResponse(response, responseStatus, responseCode)
     }
 
-    return
-
-    // response.status(error.status).send(error.name)
+    super.handle(...arguments);
   }
 
   /**
