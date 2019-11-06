@@ -8,11 +8,7 @@ class StudentController {
   async student ({ request, response }) {
     // Get request body
 
-    try {
-      // Process
-    } catch (exception) {
-      throw new ServerErrorException
-    }
+    // Process
 
     // Set response body
     const responseStatus = Config.get('response.status.success')

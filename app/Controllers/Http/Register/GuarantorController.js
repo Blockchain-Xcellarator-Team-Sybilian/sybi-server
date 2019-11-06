@@ -2,17 +2,12 @@
 
 const Config = use('Config')
 const ResponseHelper = use('ResponseHelper')
-const ServerErrorException = use('App/Exceptions/ServerErrorException')
 
 class GuarantorController {
   async guarantor ({ request, response }) {
     // Get request body
 
-    try {
-      // Process
-    } catch (exception) {
-      throw new ServerErrorException
-    }
+    // Process
 
     // Set response body
     const responseStatus = Config.get('response.status.success')
