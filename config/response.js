@@ -12,8 +12,8 @@ module.exports = {
   code: {
     success: {
       auth: {
-        register: 'SUCCESS_USER_REGISTERED',
-        login: 'SUCCESS_USER_LOGGED_IN'
+        register: 'SUCCESS_USER_REGISTER',
+        login: 'SUCCESS_USER_LOG_IN'
       },
       user: {
         browse: 'SUCCESS_USER_BROWSE',
