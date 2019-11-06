@@ -25,7 +25,20 @@ class UserRepository {
     return user
   }
 
-  async edit (userDetails) {
+  async edit (userId, userDetails) {
+    let user = await this.user.findBy('id', userId)
+
+    if (user == null) {
+      throw new UserNotFoundException()
+    }
+
+    user.username = userDetails.username
+    user.password = userDetails.password
+    user.type = userDetails.type
+
+    await user.save()
+
+    return user
   }
 
   async add (userDetails) {
