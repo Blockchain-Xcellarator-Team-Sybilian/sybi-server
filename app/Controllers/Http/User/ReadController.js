@@ -5,7 +5,6 @@ const Helpers = use('Educado/Helpers')
 const UserRepository = use('App/Repositories/UserRepository')
 
 class ReadController {
-
   constructor () {
     this.userRepository = UserRepository
   }
