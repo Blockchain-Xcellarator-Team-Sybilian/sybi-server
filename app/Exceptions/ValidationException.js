@@ -4,7 +4,7 @@ const Config = use('Config')
 const ResponseHelper = use('ResponseHelper')
 const { LogicalException } = require('@adonisjs/generic-exceptions')
 
-class BadRequestException extends LogicalException {
+class ValidationException extends LogicalException {
   handle (error, { response }) {
     const responseStatus = Config.get('response.status.bad_request')
     const responseCode = Config.get('response.code.error.bad_request')
@@ -14,4 +14,4 @@ class BadRequestException extends LogicalException {
   }
 }
 
-module.exports = BadRequestException
+module.exports = ValidationException

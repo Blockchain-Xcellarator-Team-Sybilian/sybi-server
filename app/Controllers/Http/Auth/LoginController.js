@@ -3,7 +3,7 @@
 const Config = use('Config')
 const ResponseHelper = use('ResponseHelper')
 const UserRepository = use('UserRepository')
-const UnauthorizedException = use('App/Exceptions/UnauthorizedException')
+const UnauthorizedLoginException = use('App/Exceptions/UnauthorizedLoginException')
 
 class LoginController {
   async login ({ request, auth, response }) {
@@ -25,7 +25,7 @@ class LoginController {
         return responseBody
       }
     } catch (exception) {
-      throw new UnauthorizedException()
+      throw new UnauthorizedLoginException
     }
   }
 }

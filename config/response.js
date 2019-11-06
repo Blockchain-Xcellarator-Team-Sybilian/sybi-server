@@ -27,7 +27,7 @@ module.exports = {
     error: {
       bad_request: 'ERROR_BAD_REQUEST',
       unauthorized: 'ERROR_UNAUTHORIZED',
-      user_not_found: 'ERROR_USER_NOT_FOUND'
+      record_not_found: 'ERROR_RECORD_NOT_FOUND'
     }
   }
 }
