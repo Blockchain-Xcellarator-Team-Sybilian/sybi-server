@@ -34,9 +34,9 @@ Route.group(() => {
   // Read user
   Route.get('/:id', 'ReadController.read')
   // Edit user
-  Route.put('/:id', 'EditController.edit')
+  Route.put('/:id', 'EditController.edit').validator('User/EditUserValidator')
   // Add user
-  Route.post('/', 'AddController.add')
+  Route.post('/', 'AddController.add').validator('User/AddUserValidator')
   // Delete user
   Route.delete('/:id', 'DeleteController.delete')
 }).namespace('User').prefix('users')
