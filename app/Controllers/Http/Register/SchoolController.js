@@ -2,7 +2,6 @@
 
 const Config = use('Config')
 const ResponseHelper = use('ResponseHelper')
-const ServerErrorException = use('App/Exceptions/ServerErrorException')
 
 class SchoolController {
   async school ({ request, response }) {
