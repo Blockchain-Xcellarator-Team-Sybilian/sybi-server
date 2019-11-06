@@ -25,7 +25,6 @@ class ReadController {
 
     return responseBody
   }
-
 }
 
 module.exports = ReadController
