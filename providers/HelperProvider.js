@@ -1,7 +1,7 @@
 'use strict'
 
 const { ServiceProvider } = require('@adonisjs/fold')
-const ResponseHelper = require('../App/Helpers/ResponseHelper')
+const ResponseHelper = require('../app/Helpers/ResponseHelper')
 
 class HelperProvider extends ServiceProvider {
   /**

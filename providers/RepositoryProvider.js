@@ -1,7 +1,7 @@
 'use strict'
 
 const { ServiceProvider } = require('@adonisjs/fold')
-const UserRepository = require('../App/Repositories/UserRepository')
+const UserRepository = require('../app/Repositories/UserRepository')
 
 class RepositoryProvider extends ServiceProvider {
   /**
@@ -13,7 +13,7 @@ class RepositoryProvider extends ServiceProvider {
    */
   register () {
     this.app.bind('App/Repositories/UserRepository', () => {
-       return new UserRepository(use('App/Models/User'))
+      return new UserRepository(use('App/Models/User'))
     })
   }
 
