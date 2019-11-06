@@ -21,8 +21,7 @@ module.exports = {
       },
       token: {
         request: 'REQUEST_TOKEN',
-        refresh: 'REFRESH_TOKEN',
-        revoke: 'REVOKE_TOKEN'
+        refresh: 'REFRESH_TOKEN'
       },
       user: {
         browse: 'BROWSE_USERS',

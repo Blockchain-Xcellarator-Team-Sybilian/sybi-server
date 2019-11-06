@@ -35,6 +35,8 @@ Route.group(() => {
 Route.group(() => {
   // Request
   Route.post('/request', 'RequestController.request').validator('Token/RequestTokenValidator')
+  // Refresh
+  Route.post('/refresh', 'RefreshController.refresh').validator('Token/RefreshTokenValidator')
 }).namespace('Token').prefix('token')
 
 /** Users */
