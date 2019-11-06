@@ -19,6 +19,14 @@ const Route = use('Route')
 // Home
 Route.get('/', 'HomeController.index')
 
+/** Token */
+Route.group(() => {
+  // Request
+  Route.post('/request', 'RequestController.request').validator('Token/RequestTokenValidator')
+  // Refresh
+  Route.post('/refresh', 'RefreshController.refresh').validator('Token/RefreshTokenValidator')
+}).namespace('Token').prefix('token').middleware('guest')
+
 /** Register */
 Route.group(() => {
   // Student
@@ -29,15 +37,7 @@ Route.group(() => {
   Route.post('/school', 'SchoolController.school')
   // Lender
   Route.post('/lender', 'LenderController.lender')
-}).namespace('Register').prefix('register')
-
-/** Token */
-Route.group(() => {
-  // Request
-  Route.post('/request', 'RequestController.request').validator('Token/RequestTokenValidator')
-  // Refresh
-  Route.post('/refresh', 'RefreshController.refresh').validator('Token/RefreshTokenValidator')
-}).namespace('Token').prefix('token')
+}).namespace('Register').prefix('register').middleware('auth')
 
 /** Users */
 Route.group(() => {
@@ -51,4 +51,4 @@ Route.group(() => {
   Route.post('/', 'AddController.add').validator('User/AddUserValidator')
   // Delete user
   Route.delete('/:id', 'DeleteController.delete')
-}).middleware('auth').namespace('User').prefix('users')
+}).namespace('User').prefix('users').middleware('auth')
