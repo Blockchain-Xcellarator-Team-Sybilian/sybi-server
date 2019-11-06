@@ -35,6 +35,7 @@ module.exports = {
       bad_request: 'BAD_REQUEST',
       unauthorized: 'UNAUTHORIZED',
       record_not_found: 'RECORD_NOT_FOUND',
+      route_not_found: 'ROUTE_NOT_FOUND',
       server_error: 'INTERNAL_SERVER_ERROR'
     }
   }
