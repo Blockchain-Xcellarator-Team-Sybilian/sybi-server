@@ -19,6 +19,12 @@ const Route = use('Route')
 // Home
 Route.get('/', 'HomeController.index')
 
-// Auth
-Route.post('/auth/register', 'Auth/AuthController.register').validator('Auth/RegisterUserValidator')
-Route.post('/auth/login', 'Auth/AuthController.login').validator('Auth/LoginUserValidator')
+/** Auth */
+// Register
+Route.post('/auth/register', 'Auth/RegisterController.register').validator('Auth/RegisterUserValidator')
+// Login
+Route.post('/auth/login', 'Auth/LoginController.login').validator('Auth/LoginUserValidator')
+
+/** Users */
+// Browse users
+Route.get('/users', 'User/BrowseController.browse')

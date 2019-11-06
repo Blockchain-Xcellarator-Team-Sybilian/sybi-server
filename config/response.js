@@ -11,9 +11,16 @@ module.exports = {
   // Response codes
   code: {
     success: {
-      user: {
+      auth: {
         register: 'SUCCESS_USER_REGISTERED',
         login: 'SUCCESS_USER_LOGGED_IN'
+      },
+      user: {
+        browse: 'SUCCESS_USER_BROWSE',
+        read: 'SUCCESS_USER_READ',
+        edit: 'SUCCESS_USER_EDIT',
+        add: 'SUCCESS_USER_ADD',
+        delete: 'SUCCESS_USER_DELETE'
       }
     },
     error: {

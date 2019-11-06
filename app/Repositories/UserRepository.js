@@ -8,7 +8,22 @@ class UserRepository {
     this.user = user
   }
 
-  async create (requestBody) {
+  async browse () {
+    let users = await this.user.all()
+
+    return users
+  }
+
+  async read (requestBody) {
+    let user = await this.user.findBy('username', requestBody.username)
+
+    return user
+  }
+
+  async edit (requestBody) {
+  }
+
+  async add (requestBody) {
     let user = new this.user
 
     user.username = requestBody.username
@@ -20,10 +35,7 @@ class UserRepository {
     return user
   }
 
-  async read (requestBody) {
-    let user = await this.user.findBy('username', requestBody.username)
-
-    return user
+  async delete (requestBody) {
   }
 }
 
