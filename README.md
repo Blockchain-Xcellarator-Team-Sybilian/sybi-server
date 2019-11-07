@@ -88,8 +88,8 @@ Run migrations.
 adonis migration:run
 ```
 
-Run tests.
+Run seeds.
 
 ```bash
-adonis test
+adonis seed
 ```
