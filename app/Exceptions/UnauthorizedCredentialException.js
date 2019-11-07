@@ -4,7 +4,7 @@ const Config = use('Config')
 const ResponseHelper = use('ResponseHelper')
 const { LogicalException } = require('@adonisjs/generic-exceptions')
 
-class UnauthorizedJwtTokenException extends LogicalException {
+class UnauthorizedCredentialException extends LogicalException {
   handle (error, { response }) {
     const responseStatus = Config.get('response.status.unauthorized')
     const responseCode = Config.get('response.code.error.unauthorized')
@@ -14,4 +14,4 @@ class UnauthorizedJwtTokenException extends LogicalException {
   }
 }
 
-module.exports = UnauthorizedJwtTokenException
+module.exports = UnauthorizedCredentialException

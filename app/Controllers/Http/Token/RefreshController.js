@@ -2,7 +2,7 @@
 
 const Config = use('Config')
 const ResponseHelper = use('ResponseHelper')
-const UnauthorizedJwtTokenException = use('App/Exceptions/UnauthorizedJwtTokenException')
+const UnauthorizedCredentialException = use('App/Exceptions/UnauthorizedCredentialException')
 
 class RefreshController {
   async refresh ({ request, auth, response }) {
@@ -21,7 +21,7 @@ class RefreshController {
 
       return responseBody
     } catch (exception) {
-      throw new UnauthorizedJwtTokenException
+      throw new UnauthorizedCredentialException
     }
   }
 }
