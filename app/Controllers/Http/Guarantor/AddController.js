@@ -8,7 +8,7 @@ class AddController {
   async add ({ request, response, transform }) {
     // Get request body
     const guarantorDetails = request.only(['student_id', 'name', 'phone_number', 'email',
-      'bank_account_number', 'source_of_income', 'source_of_income_description', 'date_of_birth',
+      'source_of_income', 'source_of_income_description', 'date_of_birth',
       'place_of_birth', 'present_address', 'permanent_address'])
     
     // Process

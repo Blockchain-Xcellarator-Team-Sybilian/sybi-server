@@ -13,7 +13,6 @@ class StudentSchema extends Schema {
       table.integer('student_number').notNullable()
       table.integer('phone_number').notNullable()
       table.string('email', 80).notNullable()
-      table.integer('bank_account_number').notNullable()
       table.string('source_of_funds').notNullable()
       table.string('source_of_funds_description', 80).nullable()
       table.datetime('date_of_birth').notNullable()

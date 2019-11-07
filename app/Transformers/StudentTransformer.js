@@ -27,7 +27,6 @@ class StudentTransformer extends BumblebeeTransformer {
       name: model.name,
       phone_number: model.phone_number,
       email: model.email,
-      bank_account_number: model.bank_account_number,
       source_of_funds: model.source_of_funds,
       source_of_funds_description: model.source_of_funds_description,
       student_number: model.student_number,

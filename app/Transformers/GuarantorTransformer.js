@@ -19,7 +19,6 @@ class GuarantorTransformer extends BumblebeeTransformer {
       name: model.name,
       phone_number: model.phone_number,
       email: model.email,
-      bank_account_number: model.bank_account_number,
       source_of_income: model.source_of_income,
       source_of_income_description: model.source_of_income_description,
       date_of_birth: model.date_of_birth,

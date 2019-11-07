@@ -9,7 +9,7 @@ class EditController {
     // Get request body
     const guarantorId = params.id
     const guarantorDetails = request.only(['name', 'phone_number', 'email',
-      'bank_account_number', 'source_of_income', 'source_of_income_description', 'date_of_birth',
+      'source_of_income', 'source_of_income_description', 'date_of_birth',
       'place_of_birth', 'present_address', 'permanent_address'])
 
     // Process

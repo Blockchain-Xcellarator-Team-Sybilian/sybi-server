@@ -24,7 +24,6 @@ class LenderRepository {
     lender.name = lenderDetails.name
     lender.phone_number = lenderDetails.phone_number
     lender.email = lenderDetails.email
-    lender.bank_account_number = lenderDetails.bank_account_number
     lender.address = lenderDetails.address
 
     await lender.save()
@@ -39,7 +38,6 @@ class LenderRepository {
     lender.name = lenderDetails.name
     lender.phone_number = lenderDetails.phone_number
     lender.email = lenderDetails.email
-    lender.bank_account_number = lenderDetails.bank_account_number
     lender.address = lenderDetails.address
 
     await lender.save()

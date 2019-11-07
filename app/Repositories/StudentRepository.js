@@ -24,7 +24,6 @@ class StudentRepository {
     student.name = studentDetails.name
     student.phone_number = studentDetails.phone_number
     student.email = studentDetails.email
-    student.bank_account_number = studentDetails.bank_account_number
     student.source_of_funds = studentDetails.source_of_funds
     student.source_of_funds_description = studentDetails.source_of_funds_description
     student.student_number = studentDetails.student_number
@@ -46,7 +45,6 @@ class StudentRepository {
     student.name = studentDetails.name
     student.phone_number = studentDetails.phone_number
     student.email = studentDetails.email
-    student.bank_account_number = studentDetails.bank_account_number
     student.source_of_funds = studentDetails.source_of_funds
     student.source_of_funds_description = studentDetails.source_of_funds_description
     student.student_number = studentDetails.student_number

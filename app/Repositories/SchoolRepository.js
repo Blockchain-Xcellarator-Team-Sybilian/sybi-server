@@ -24,7 +24,6 @@ class SchoolRepository {
     school.name = schoolDetails.name
     school.phone_number = schoolDetails.phone_number
     school.email = schoolDetails.email
-    school.bank_account_number = schoolDetails.bank_account_number
     school.address = schoolDetails.address
 
     await school.save()
@@ -39,7 +38,6 @@ class SchoolRepository {
     school.name = schoolDetails.name
     school.phone_number = schoolDetails.phone_number
     school.email = schoolDetails.email
-    school.bank_account_number = schoolDetails.bank_account_number
     school.address = schoolDetails.address
 
     await school.save()

@@ -9,7 +9,7 @@ class EditController {
     // Get request body
     const studentId = params.id
     const studentDetails = request.only(['name', 'phone_number', 'email',
-      'bank_account_number', 'source_of_funds', 'source_of_funds_description', 'student_number',
+      'source_of_funds', 'source_of_funds_description', 'student_number',
       'date_of_birth', 'place_of_birth', 'present_address', 'permanent_address'])
 
     // Process

@@ -19,7 +19,6 @@ class SchoolTransformer extends BumblebeeTransformer {
       name: model.name,
       phone_number: model.phone_number,
       email: model.email,
-      bank_account_number: model.bank_account_number,
       address: model.address,
       created_at: model.created_at,
       updated_at: model.updated_at

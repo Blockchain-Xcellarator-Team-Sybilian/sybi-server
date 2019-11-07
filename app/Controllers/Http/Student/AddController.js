@@ -8,7 +8,7 @@ class AddController {
   async add ({ request, response, transform }) {
     // Get request body
     const studentDetails = request.only(['user_id', 'school_id', 'name', 'phone_number', 'email',
-      'bank_account_number', 'source_of_funds', 'source_of_funds_description', 'student_number',
+      'source_of_funds', 'source_of_funds_description', 'student_number',
       'date_of_birth', 'place_of_birth', 'present_address', 'permanent_address'])
     
     // Process

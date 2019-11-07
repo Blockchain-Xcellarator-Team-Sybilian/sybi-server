@@ -24,7 +24,6 @@ class GuarantorRepository {
     guarantor.name = guarantorDetails.name
     guarantor.phone_number = guarantorDetails.phone_number
     guarantor.email = guarantorDetails.email
-    guarantor.bank_account_number = guarantorDetails.bank_account_number
     guarantor.source_of_income = guarantorDetails.source_of_income
     guarantor.source_of_income_description = guarantorDetails.source_of_income_description
     guarantor.date_of_birth = guarantorDetails.date_of_birth
@@ -44,7 +43,6 @@ class GuarantorRepository {
     guarantor.name = guarantorDetails.name
     guarantor.phone_number = guarantorDetails.phone_number
     guarantor.email = guarantorDetails.email
-    guarantor.bank_account_number = guarantorDetails.bank_account_number
     guarantor.source_of_income = guarantorDetails.source_of_income
     guarantor.source_of_income_description = guarantorDetails.source_of_income_description
     guarantor.date_of_birth = guarantorDetails.date_of_birth
