@@ -3,7 +3,7 @@
 const Config = use('Config')
 const ResponseHelper = use('ResponseHelper')
 const UserRepository = use('UserRepository')
-const UnauthorizedException = use('App/Exceptions/UnauthorizedException')
+const UnauthorizedJwtTokenException = use('App/Exceptions/UnauthorizedJwtTokenException')
 
 class RequestController {
   async request ({ request, auth, response }) {
@@ -25,7 +25,7 @@ class RequestController {
         return responseBody
       }
     } catch (exception) {
-      throw new UnauthorizedException
+      throw new UnauthorizedJwtTokenException
     }
   }
 }
