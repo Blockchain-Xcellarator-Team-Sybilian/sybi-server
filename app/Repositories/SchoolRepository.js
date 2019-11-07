@@ -2,33 +2,34 @@
 
 class SchoolRepository {
 
-  constructor (school, hash) {
+  constructor (school) {
     this.school = school
-    this.hash = hash
   }
 
   async browse () {
-    // let users = await this.user.all()
+    let schools = await this.school.all()
 
-    // return users
+    return schools
   }
 
-  async read (userId) {
-    // let user = await this.user.findByOrFail('id', userId)
+  async read (schoolId) {
+    let school = await this.school.findByOrFail('id', schoolId)
 
-    // return user
+    return school
   }
 
-  async edit (userId, userDetails) {
-    // let user = await this.user.findByOrFail('id', userId)
+  async edit (schoolId, schoolDetails) {
+    let school = await this.school.findByOrFail('id', schoolId)
 
-    // user.username = userDetails.username
-    // user.password = userDetails.password
-    // user.type = userDetails.type
+    school.name = schoolDetails.name
+    school.phone_number = schoolDetails.phone_number
+    school.email = schoolDetails.email
+    school.bank_account_number = schoolDetails.bank_account_number
+    school.address = schoolDetails.address
 
-    // await user.save()
+    await school.save()
 
-    // return user
+    return school
   }
 
   async add (schoolDetails) {
@@ -46,10 +47,10 @@ class SchoolRepository {
     return school
   }
 
-  async delete (userId) {
-    // let user = await this.user.findByOrFail('id', userId)
+  async delete (schoolId) {
+    let school = await this.school.findByOrFail('id', schoolId)
 
-    // await user.delete()
+    await school.delete()
   }
 }
 

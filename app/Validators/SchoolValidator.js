@@ -14,7 +14,6 @@ class SchoolValidator {
 
   get rules () {
     return {
-      user_id: 'required',
       name: 'required',
       phone_number: 'required',
       email: 'required',
@@ -25,7 +24,6 @@ class SchoolValidator {
 
   get messages () {
     return {
-      'user_id.required': 'User ID is required.',
       'name.unique': 'Name is required.',
       'phone_number.required': 'Phone number is required',
       'email.required': 'Email is required',
