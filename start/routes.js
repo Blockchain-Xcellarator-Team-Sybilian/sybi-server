@@ -82,3 +82,17 @@ Route.group(() => {
   // Delete student
   Route.delete('/:id', 'DeleteController.delete')
 }).namespace('Student').prefix('students').middleware('auth')
+
+/** Guarantor */
+Route.group(() => {
+  // Browse guarantors
+  Route.get('/', 'BrowseController.browse')
+  // Read guarantor
+  Route.get('/:id', 'ReadController.read')
+  // Edit guarantor
+  Route.put('/:id', 'EditController.edit').validator('GuarantorValidator')
+  // Add guarantor
+  Route.post('/', 'AddController.add').validator('GuarantorValidator')
+  // Delete guarantor
+  Route.delete('/:id', 'DeleteController.delete')
+}).namespace('Guarantor').prefix('guarantors').middleware('auth')
