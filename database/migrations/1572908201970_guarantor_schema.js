@@ -19,7 +19,6 @@ class GuarantorSchema extends Schema {
       table.string('place_of_birth', 80).notNullable()
       table.string('present_address', 80).notNullable()
       table.string('permanent_address', 80).notNullable()
-      table.string('hash', 60).notNullable()
       table.timestamps()
     })
   }

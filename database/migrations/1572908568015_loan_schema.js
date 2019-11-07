@@ -19,7 +19,6 @@ class LoanSchema extends Schema {
       table.datetime('approved_at').notNullable()
       table.datetime('released_at').notNullable()
       table.datetime('paid_at').notNullable()
-      table.string('hash', 60).notNullable()
       table.timestamps()
     })
   }
