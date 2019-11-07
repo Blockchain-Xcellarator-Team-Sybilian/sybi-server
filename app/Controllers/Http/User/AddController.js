@@ -7,7 +7,7 @@ const UserRepository = use('UserRepository')
 class AddController {
   async add ({ request, response, transform }) {
     // Get request body
-    const userDetails = request.only(['username', 'password', 'type'])
+    const userDetails = request.only(['username', 'password'])
     
     // Process
     let user = await transform.item(UserRepository.add(userDetails), 'UserTransformer')

@@ -29,7 +29,6 @@ class UserRepository {
 
     user.username = userDetails.username
     user.password = userDetails.password
-    user.type = userDetails.type
 
     await user.save()
 
@@ -41,7 +40,6 @@ class UserRepository {
 
     user.username = userDetails.username
     user.password = userDetails.password
-    user.type = userDetails.type
 
     await user.save()
 

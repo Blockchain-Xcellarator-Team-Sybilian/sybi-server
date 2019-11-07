@@ -15,8 +15,7 @@ class UserValidator {
   get rules () {
     return {
       username: 'required|unique:users',
-      password: 'required',
-      type: 'required'
+      password: 'required'
     }
   }
 
@@ -24,8 +23,7 @@ class UserValidator {
     return {
       'username.required': 'Username is required.',
       'username.unique': 'Username already taken.',
-      'password.required': 'Password is required.',
-      'type.required': 'User type is required.'  
+      'password.required': 'Password is required.'
     }
   }
 

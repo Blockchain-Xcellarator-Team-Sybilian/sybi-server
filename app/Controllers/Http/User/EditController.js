@@ -8,7 +8,7 @@ class EditController {
   async edit ({ request, response, params, transform }) {
     // Get request body
     const userId = params.id
-    const userDetails = request.only(['username', 'password', 'type'])
+    const userDetails = request.only(['username', 'password'])
 
     // Process
     let user = await transform.item(UserRepository.edit(userId, userDetails), 'UserTransformer')
