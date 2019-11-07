@@ -19,12 +19,6 @@ const Route = use('Route')
 // Home
 Route.get('/', 'HomeController.index')
 
-/** Register */
-Route.group(() => {
-  // Register student
-  Route.post('/student', 'StudentController.student').validator('RequestTokenValidator')
-}).namespace('Register').prefix('register').middleware('guest')
-
 /** Token */
 Route.group(() => {
   // Request
