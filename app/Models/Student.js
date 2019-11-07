@@ -7,6 +7,10 @@ class Student extends Model {
   user () {
     return this.belongsTo('App/Models/User')
   }
+
+  school () {
+    return this.belongsTo('App/Models/School')
+  }
 }
 
 module.exports = Student
