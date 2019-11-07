@@ -11,6 +11,10 @@ class Student extends Model {
   school () {
     return this.belongsTo('App/Models/School')
   }
+
+  guarantor () {
+    return this.hasOne('App/Models/Guarantor')
+  }
 }
 
 module.exports = Student

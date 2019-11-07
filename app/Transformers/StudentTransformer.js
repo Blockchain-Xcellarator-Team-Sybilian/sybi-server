@@ -12,7 +12,8 @@ class StudentTransformer extends BumblebeeTransformer {
   static get defaultInclude () {
     return [
       'user',
-      'school'
+      'school',
+      'guarantor'
     ]
   }
 
@@ -46,6 +47,10 @@ class StudentTransformer extends BumblebeeTransformer {
 
   includeSchool (model) {
     return this.item(model.getRelated('school'), 'SchoolTransformer')
+  }
+
+  includeGuarantor (model) {
+    return this.item(model.getRelated('guarantor'), 'GuarantorTransformer')
   }
 }
 
