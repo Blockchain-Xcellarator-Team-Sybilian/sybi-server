@@ -11,7 +11,7 @@ class SchoolSchema extends Schema {
       table.string('name', 80).notNullable()
       table.integer('phone_number').notNullable()
       table.string('email', 80).notNullable()
-      table.integer('bank_account_number', 60).notNullable()
+      table.integer('bank_account_number', 60).notNullable().unique()
       table.string('address', 80).notNullable()
       table.timestamps()
     })
