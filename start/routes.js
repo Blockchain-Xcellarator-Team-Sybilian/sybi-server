@@ -39,7 +39,7 @@ Route.group(() => {
   Route.post('/', 'AddController.add').validator('UserValidator')
   // Delete user
   Route.delete('/:id', 'DeleteController.delete')
-}).namespace('User').prefix('users').middleware('auth')
+}).namespace('User').prefix('users')
 
 /** School */
 Route.group(() => {
@@ -48,9 +48,23 @@ Route.group(() => {
   // Read school
   Route.get('/:id', 'ReadController.read')
   // Edit school
-  Route.put('/:id', 'EditController.edit')
+  Route.put('/:id', 'EditController.edit').validator('SchoolValidator')
   // Add school
   Route.post('/', 'AddController.add').validator('SchoolValidator')
   // Delete school
   Route.delete('/:id', 'DeleteController.delete')
 }).namespace('School').prefix('schools').middleware('auth')
+
+/** Lender */
+Route.group(() => {
+  // Browse lenders
+  Route.get('/', 'BrowseController.browse')
+  // Read lender
+  Route.get('/:id', 'ReadController.read')
+  // Edit lender
+  Route.put('/:id', 'EditController.edit').validator('LenderValidator')
+  // Add lender
+  Route.post('/', 'AddController.add').validator('LenderValidator')
+  // Delete lender
+  Route.delete('/:id', 'DeleteController.delete')
+}).namespace('Lender').prefix('lenders').middleware('auth')

@@ -3,6 +3,7 @@
 const { ServiceProvider } = require('@adonisjs/fold')
 const UserRepository = require('../app/Repositories/UserRepository')
 const SchoolRepository = require('../app/Repositories/SchoolRepository')
+const LenderRepository = require('../app/Repositories/LenderRepository')
 
 class RepositoryProvider extends ServiceProvider {
   /**
@@ -18,6 +19,9 @@ class RepositoryProvider extends ServiceProvider {
     }),
     this.app.bind('App/Repositories/SchoolRepository', () => {
       return new SchoolRepository(use('App/Models/School'))
+    }),
+    this.app.bind('App/Repositories/LenderRepository', () => {
+      return new LenderRepository(use('App/Models/Lender'))
     })
   }
 
