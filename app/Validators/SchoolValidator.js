@@ -17,7 +17,7 @@ class SchoolValidator {
       name: 'required',
       phone_number: 'required',
       email: 'required',
-      bank_account_number: 'required',
+      bank_account_number: 'required|unique:schools',
       address: 'required'
     }
   }
