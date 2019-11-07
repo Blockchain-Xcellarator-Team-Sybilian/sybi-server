@@ -68,3 +68,17 @@ Route.group(() => {
   // Delete lender
   Route.delete('/:id', 'DeleteController.delete')
 }).namespace('Lender').prefix('lenders').middleware('auth')
+
+/** Student */
+Route.group(() => {
+  // Browse students
+  Route.get('/', 'BrowseController.browse')
+  // Read student
+  Route.get('/:id', 'ReadController.read')
+  // Edit student
+  Route.put('/:id', 'EditController.edit').validator('StudentValidator')
+  // Add student
+  Route.post('/', 'AddController.add').validator('StudentValidator')
+  // Delete student
+  Route.delete('/:id', 'DeleteController.delete')
+}).namespace('Student').prefix('students').middleware('auth')
