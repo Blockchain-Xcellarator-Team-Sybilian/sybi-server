@@ -22,9 +22,9 @@ Route.get('/', 'HomeController.index')
 /** Token */
 Route.group(() => {
   // Request
-  Route.post('/request', 'RequestController.request').validator('Token/RequestTokenValidator')
+  Route.post('/request', 'RequestController.request').validator('RequestTokenValidator')
   // Refresh
-  Route.post('/refresh', 'RefreshController.refresh').validator('Token/RefreshTokenValidator')
+  Route.post('/refresh', 'RefreshController.refresh').validator('RefreshTokenValidator')
 }).namespace('Token').prefix('token').middleware('guest')
 
 /** Register */
@@ -46,9 +46,23 @@ Route.group(() => {
   // Read user
   Route.get('/:id', 'ReadController.read')
   // Edit user
-  Route.put('/:id', 'EditController.edit').validator('User/EditUserValidator')
+  Route.put('/:id', 'EditController.edit').validator('UserValidator')
   // Add user
-  Route.post('/', 'AddController.add').validator('User/AddUserValidator')
+  Route.post('/', 'AddController.add').validator('UserValidator')
   // Delete user
   Route.delete('/:id', 'DeleteController.delete')
 }).namespace('User').prefix('users').middleware('auth')
+
+/** School */
+Route.group(() => {
+  // Browse schools
+  Route.get('/', 'BrowseController.browse')
+  // Read school
+  Route.get('/:id', 'ReadController.read')
+  // Edit school
+  Route.put('/:id', 'EditController.edit')
+  // Add school
+  Route.post('/', 'AddController.add').validator('SchoolValidator')
+  // Delete school
+  Route.delete('/:id', 'DeleteController.delete')
+}).namespace('School').prefix('schools').middleware('auth')
