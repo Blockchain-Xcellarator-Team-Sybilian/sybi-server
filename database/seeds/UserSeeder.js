@@ -15,9 +15,7 @@ const Factory = use('Factory')
 
 class UserSeeder {
   async run () {
-    await Factory.model('App/Models/User').create({ username: 'student', password: 'secret' })
-    await Factory.model('App/Models/User').create({ username: 'school', password: 'secret' })
-    await Factory.model('App/Models/User').create({ username: 'lender', password: 'secret' })
+    await Factory.model('App/Models/User').create({ username: 'root', password: 'secret' })
   }
 }
 
