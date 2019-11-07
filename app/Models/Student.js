@@ -4,10 +4,6 @@
 const Model = use('Model')
 
 class Student extends Model {
-  user () {
-    return this.belongsTo('App/Models/User')
-  }
-
   school () {
     return this.belongsTo('App/Models/School')
   }

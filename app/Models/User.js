@@ -12,6 +12,18 @@ class User extends Model {
   tokens () {
     return this.hasMany('App/Models/Token')
   }
+
+  school () {
+    return this.hasOne('App/Models/School')
+  }
+
+  lender () {
+    return this.hasOne('App/Models/Lender')
+  }
+
+  student () {
+    return this.hasOne('App/Models/Student')
+  }
   
   static get hidden () {
     return ['password']

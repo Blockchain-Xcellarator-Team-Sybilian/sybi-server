@@ -9,12 +9,6 @@ const BumblebeeTransformer = use('Bumblebee/Transformer')
  * @constructor
  */
 class LenderTransformer extends BumblebeeTransformer {
-  static get defaultInclude () {
-    return [
-      'user'
-    ]
-  }
-
   /**
    * This method is used to transform the data.
    */
@@ -30,10 +24,6 @@ class LenderTransformer extends BumblebeeTransformer {
       created_at: model.created_at,
       updated_at: model.updated_at
     }
-  }
-
-  includeUser (model) {
-    return this.item(model.getRelated('user'), 'UserTransformer')
   }
 }
 

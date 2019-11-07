@@ -9,6 +9,14 @@ const BumblebeeTransformer = use('Bumblebee/Transformer')
  * @constructor
  */
 class UserTransformer extends BumblebeeTransformer {
+  static get defaultInclude () {
+    return [
+      'school',
+      'lender',
+      'student'
+    ]
+  }
+
   /**
    * This method is used to transform the data.
    */
@@ -20,6 +28,18 @@ class UserTransformer extends BumblebeeTransformer {
       created_at: model.created_at,
       updated_at: model.updated_at
     }
+  }
+
+  includeSchool (model) {
+    return this.item(model.getRelated('school'), 'SchoolTransformer')
+  }
+
+  includeLender (model) {
+    return this.item(model.getRelated('lender'), 'LenderTransformer')
+  }
+
+  includeStudent (model) {
+    return this.item(model.getRelated('student'), 'StudentTransformer')
   }
 }
 
