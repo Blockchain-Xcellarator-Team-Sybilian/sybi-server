@@ -39,7 +39,7 @@ Route.group(() => {
   Route.post('/', 'AddController.add').validator('UserValidator')
   // Delete user
   Route.delete('/:id', 'DeleteController.delete')
-}).namespace('User').prefix('users')
+}).namespace('User').prefix('users').middleware('auth')
 
 /** School */
 Route.group(() => {
