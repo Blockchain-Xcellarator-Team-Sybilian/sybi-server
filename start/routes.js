@@ -99,3 +99,11 @@ Route.group(() => {
   // Delete guarantor
   Route.delete('/:id', 'DeleteController.delete')
 }).namespace('Guarantor').prefix('guarantors').middleware('auth')
+
+/** Document */
+Route.group(() => {
+  // Upload
+  Route.post('/upload', 'UploadController.upload')
+  // Download
+  Route.get('/download', 'DownloadController.download')
+}).namespace('Document').prefix('document')
