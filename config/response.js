@@ -29,6 +29,48 @@ module.exports = {
         edit: 'EDIT_USER',
         add: 'ADD_USER',
         delete: 'DELETE_USER'
+      },
+      school: {
+        browse: 'BROWSE_SCHOOLS',
+        read: 'READ_SCHOOL',
+        edit: 'EDIT_SCHOOL',
+        add: 'ADD_SCHOOL',
+        delete: 'DELETE_SCHOOL'
+      },
+      lender: {
+        browse: 'BROWSE_LENDERS',
+        read: 'READ_LENDER',
+        edit: 'EDIT_LENDER',
+        add: 'ADD_LENDER',
+        delete: 'DELETE_LENDER'
+      },
+      student: {
+        browse: 'BROWSE_STUDENTS',
+        read: 'READ_STUDENT',
+        edit: 'EDIT_STUDENT',
+        add: 'ADD_STUDENT',
+        delete: 'DELETE_STUDENT'
+      },
+      guarantor: {
+        browse: 'BROWSE_GUARANTORS',
+        read: 'READ_GUARANTOR',
+        edit: 'EDIT_GUARANTOR',
+        add: 'ADD_GUARANTOR',
+        delete: 'DELETE_GUARANTOR'
+      },
+      loan: {
+        browse: 'BROWSE_LOANS',
+        read: 'READ_LOAN',
+        edit: 'EDIT_LOAN',
+        add: 'ADD_LOAN',
+        delete: 'DELETE_LOAN'
+      },
+      document: {
+        browse: 'BROWSE_DOCUMENTS',
+        read: 'READ_DOCUMENT',
+        edit: 'EDIT_DOCUMENT',
+        add: 'ADD_DOCUMENT',
+        delete: 'DELETE_DOCUMENT'
       }
     },
     error: {
