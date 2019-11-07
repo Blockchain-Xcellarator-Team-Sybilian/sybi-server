@@ -3,7 +3,7 @@
 const { formatters } = use('Validator')
 const ValidationException = use('App/Exceptions/ValidationException')
 
-class RegisterUserValidator {
+class RequestTokenValidator {
   get validateAll () {
     return true
   }
@@ -14,18 +14,15 @@ class RegisterUserValidator {
 
   get rules () {
     return {
-      username: 'required|unique:users',
+      username: 'required',
       password: 'required',
-      type: 'required'
     }
   }
 
   get messages () {
     return {
       'username.required': 'Username is required.',
-      'username.unique': 'Username already taken.',
-      'password.required': 'Password is required',
-      'type.required': 'User type is required'  
+      'password.required': 'Password is required.'
     }
   }
 
@@ -34,4 +31,4 @@ class RegisterUserValidator {
   }
 }
 
-module.exports = RegisterUserValidator
+module.exports = RequestTokenValidator

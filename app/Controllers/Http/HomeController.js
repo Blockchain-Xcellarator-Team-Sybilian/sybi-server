@@ -1,10 +1,9 @@
 'use strict'
 
-const Logger = use('Logger')
 const Config = use('Config')
 
 class HomeController {
-  async index ({ request }) {
+  async index () {
     return {
       name: Config.get('app.name'),
       version: Config.get('app.version')

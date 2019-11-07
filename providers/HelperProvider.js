@@ -1,6 +1,7 @@
 'use strict'
 
 const { ServiceProvider } = require('@adonisjs/fold')
+const ResponseHelper = require('../app/Helpers/ResponseHelper')
 
 class HelperProvider extends ServiceProvider {
   /**
@@ -11,8 +12,8 @@ class HelperProvider extends ServiceProvider {
    * @return {void}
    */
   register () {
-    this.app.bind('Educado/Helpers', () => {
-      return new (require('.'))
+    this.app.bind('App/Helpers/ResponseHelper', () => {
+      return new ResponseHelper()
     })
   }
 
