@@ -3,7 +3,7 @@
 const { formatters } = use('Validator')
 const ValidationException = use('App/Exceptions/ValidationException')
 
-class AddUserValidator {
+class UserValidator {
   get validateAll () {
     return true
   }
@@ -34,4 +34,4 @@ class AddUserValidator {
   }
 }
 
-module.exports = AddUserValidator
+module.exports = UserValidator
