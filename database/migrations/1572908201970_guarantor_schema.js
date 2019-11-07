@@ -7,7 +7,6 @@ class GuarantorSchema extends Schema {
   up () {
     this.create('guarantors', (table) => {
       table.increments()
-      table.integer('user_id').unsigned().references('id').inTable('users')
       table.integer('student_id').unsigned().references('id').inTable('students')
       table.string('name', 80).notNullable()
       table.integer('phone_number').notNullable()
