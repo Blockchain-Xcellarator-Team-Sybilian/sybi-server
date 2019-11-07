@@ -29,7 +29,11 @@ class ExceptionHandler extends BaseExceptionHandler {
       return ResponseHelper.formatResponse(response, responseStatus, responseCode)
     } else if (error.name == 'InvalidJwtToken') {
       const responseStatus = Config.get('response.status.unauthorized')
-      const responseCode = Config.get('response.code.error.unauthorized')
+      const responseCode = Config.get('response.code.error.invalid_token')
+      return ResponseHelper.formatResponse(response, responseStatus, responseCode)
+    } else if (error.name == 'ExpiredJwtToken') {
+      const responseStatus = Config.get('response.status.unauthorized')
+      const responseCode = Config.get('response.code.error.expired_token')
       return ResponseHelper.formatResponse(response, responseStatus, responseCode)
     } else if (error.name == 'BadRequestError') {
       const responseStatus = Config.get('response.status.bad_request')
@@ -41,7 +45,7 @@ class ExceptionHandler extends BaseExceptionHandler {
       return ResponseHelper.formatResponse(response, responseStatus, responseCode)
     }
 
-    super.handle(...arguments);
+    return super.handle(...arguments)
   }
 
   /**
