@@ -19,6 +19,9 @@ const Route = use('Route')
 // Home
 Route.get('/', 'HomeController.index')
 
+// Register
+Route.post('/register', 'User/AddController.add').validator('UserValidator')
+
 /** Token */
 Route.group(() => {
   // Request
