@@ -22,7 +22,7 @@ class RequestTokenValidator {
   get messages () {
     return {
       'username.required': 'Username is required.',
-      'password.required': 'Password is required'
+      'password.required': 'Password is required.'
     }
   }
 

@@ -25,10 +25,11 @@ class SchoolValidator {
   get messages () {
     return {
       'name.unique': 'Name is required.',
-      'phone_number.required': 'Phone number is required',
-      'email.required': 'Email is required',
-      'bank_account_number.required': 'Bank account number is required',
-      'address.required': 'Address type is required'
+      'phone_number.required': 'Phone number is required.',
+      'email.required': 'Email is required.',
+      'bank_account_number.required': 'Bank account number is required.',
+      'bank_account_number.unique': 'Bank account number already taken.',
+      'address.required': 'Address type is required.'
     }
   }
 
