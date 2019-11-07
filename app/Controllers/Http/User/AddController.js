@@ -15,7 +15,7 @@ class AddController {
     // Set response body
     const responseStatus = Config.get('response.status.success')
     const responseCode = Config.get('response.code.success.user.add')
-    const responseData = { user }
+    const responseData = user
     const responseBody = ResponseHelper.formatResponse(response, responseStatus, responseCode, responseData)
 
     return responseBody

@@ -16,7 +16,7 @@ class RefreshController {
       // Set response body
       const responseStatus = Config.get('response.status.success')
       const responseCode = Config.get('response.code.success.token.refresh')
-      const responseData = { token }
+      const responseData = token
       const responseBody = ResponseHelper.formatResponse(response, responseStatus, responseCode, responseData)
 
       return responseBody

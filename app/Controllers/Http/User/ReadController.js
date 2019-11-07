@@ -15,7 +15,7 @@ class ReadController {
     // Set response body
     const responseStatus = Config.get('response.status.success')
     const responseCode = Config.get('response.code.success.user.read')
-    const responseData = { user }
+    const responseData = user
     const responseBody = ResponseHelper.formatResponse(response, responseStatus, responseCode, responseData)
 
     return responseBody

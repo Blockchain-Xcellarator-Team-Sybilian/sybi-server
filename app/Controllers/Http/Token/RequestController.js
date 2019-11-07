@@ -19,7 +19,7 @@ class RequestController {
         // Set response body
         const responseStatus = Config.get('response.status.success')
         const responseCode = Config.get('response.code.success.token.request')
-        const responseData = { token }
+        const responseData = token
         const responseBody = ResponseHelper.formatResponse(response, responseStatus, responseCode, responseData)
 
         return responseBody

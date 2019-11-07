@@ -16,7 +16,7 @@ class EditController {
     // Set response body
     const responseStatus = Config.get('response.status.success')
     const responseCode = Config.get('response.code.success.school.edit')
-    const responseData = { school }
+    const responseData = school
     const responseBody = ResponseHelper.formatResponse(response, responseStatus, responseCode, responseData)
 
     return responseBody
