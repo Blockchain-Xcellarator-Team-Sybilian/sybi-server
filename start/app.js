@@ -54,6 +54,7 @@ const aceProviders = [
 */
 const aliases = {
   UserRepository: 'App/Repositories/UserRepository',
+  SchoolRepository: 'App/Repositories/SchoolRepository',
   ResponseHelper: 'App/Helpers/ResponseHelper'
 }
 
