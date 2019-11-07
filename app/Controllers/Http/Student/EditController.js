@@ -13,7 +13,7 @@ class EditController {
       'date_of_birth', 'place_of_birth', 'present_address', 'permanent_address'])
 
     // Process
-    let student = await transform.item(StudentRepository.edit(studentId, studentDetails), 'StudentTransformer')
+    let student = await transform.include('school,guarantor').item(StudentRepository.edit(studentId, studentDetails), 'StudentTransformer')
 
     // Set response body
     const responseStatus = Config.get('response.status.success')

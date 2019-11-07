@@ -9,7 +9,7 @@ const BumblebeeTransformer = use('Bumblebee/Transformer')
  * @constructor
  */
 class StudentTransformer extends BumblebeeTransformer {
-  static get defaultInclude () {
+  static get availableInclude () {
     return [
       'school',
       'guarantor'
@@ -39,7 +39,7 @@ class StudentTransformer extends BumblebeeTransformer {
       updated_at: model.updated_at
     }
   }
-  
+
   includeSchool (model) {
     return this.item(model.getRelated('school'), 'SchoolTransformer')
   }
