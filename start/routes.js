@@ -27,18 +27,6 @@ Route.group(() => {
   Route.post('/refresh', 'RefreshController.refresh').validator('RefreshTokenValidator')
 }).namespace('Token').prefix('token').middleware('guest')
 
-/** Register */
-Route.group(() => {
-  // Student
-  Route.post('/student', 'StudentController.student')
-  // Guarantor
-  Route.post('/guarantor', 'GuarantorController.guarantor')
-  // Lender
-  Route.post('/school', 'SchoolController.school')
-  // Lender
-  Route.post('/lender', 'LenderController.lender')
-}).namespace('Register').prefix('register').middleware('auth')
-
 /** Users */
 Route.group(() => {
   // Browse users
