@@ -20,6 +20,7 @@ const providers = [
   '@adonisjs/cors/providers/CorsProvider',
   '@adonisjs/lucid/providers/LucidProvider',
   '@adonisjs/validator/providers/ValidatorProvider',
+  '@adonisjs/drive/providers/DriveProvider',
   'adonis-bumblebee/providers/BumblebeeProvider',
   // Custom providers
   path.join(__dirname, '..', 'providers', 'RepositoryProvider'),
