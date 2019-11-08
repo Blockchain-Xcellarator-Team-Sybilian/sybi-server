@@ -62,9 +62,9 @@ Route.group(() => {
   // Read lender
   Route.get('/:id', 'ReadController.read')
   // Edit lender
-  Route.put('/:id', 'EditController.edit').validator('LenderValidator')
+  Route.put('/:id', 'EditController.edit').validator('Lender/EditValidator')
   // Add lender
-  Route.post('/', 'AddController.add').validator('LenderValidator')
+  Route.post('/', 'AddController.add').validator('Lender/AddValidator')
   // Delete lender
   Route.delete('/:id', 'DeleteController.delete')
 }).namespace('Lender').prefix('lenders').middleware('auth')

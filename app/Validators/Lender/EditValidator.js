@@ -3,7 +3,7 @@
 const { formatters } = use('Validator')
 const ValidationException = use('App/Exceptions/ValidationException')
 
-class LenderValidator {
+class EditValidator {
   get validateAll () {
     return true
   }
@@ -23,7 +23,7 @@ class LenderValidator {
 
   get messages () {
     return {
-      'name.unique': 'Name is required.',
+      'name.required': 'Name is required.',
       'phone_number.required': 'Phone number is required.',
       'email.required': 'Email is required.',
       'address.required': 'Address type is required.'
@@ -35,4 +35,4 @@ class LenderValidator {
   }
 }
 
-module.exports = LenderValidator
+module.exports = EditValidator
