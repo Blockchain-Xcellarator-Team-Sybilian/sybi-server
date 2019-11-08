@@ -34,6 +34,7 @@ class LoanTransformer extends BumblebeeTransformer {
       approved_at: model.approved_at,
       confirmed_at: model.confirmed_at,
       released_at: model.released_at,
+      received_at: model.received_at,
       paid_at: model.paid_at,
       created_at: model.created_at,
       updated_at: model.updated_at

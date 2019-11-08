@@ -66,6 +66,7 @@ module.exports = {
         approve: 'APPROVE_LOAN',
         confirm: 'CONFIRM_LOAN',
         release: 'RELEASE_LOAN',
+        receive: 'RECEIVE_LOAN',
         pay: 'PAY_LOAN'
       },
       document: {

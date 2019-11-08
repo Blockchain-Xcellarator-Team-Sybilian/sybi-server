@@ -20,6 +20,7 @@ class LoanSchema extends Schema {
       table.datetime('approved_at').nullable()
       table.datetime('confirmed_at').nullable()
       table.datetime('released_at').nullable()
+      table.datetime('received_at').nullable()
       table.datetime('paid_at').nullable()
       table.timestamps()
     })

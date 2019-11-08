@@ -113,6 +113,8 @@ Route.group(() => {
   Route.post('/confirm', 'ConfirmController.confirm').validator('Loan/ConfirmValidator')
   // Release loan
   Route.post('/release', 'ReleaseController.release').validator('Loan/ReleaseValidator')
+  // Receive loan
+  Route.post('/receive', 'ReceiveController.receive').validator('Loan/ReceiveValidator')
   // Pay loan
   Route.post('/pay', 'PayController.pay').validator('Loan/PayValidator')
 }).namespace('Loan').prefix('loans').middleware('auth')

@@ -81,6 +81,17 @@ class LoanRepository {
     return loan
   }
 
+  async receive (loanDetails) {
+    let loan = await this.loan.findByOrFail('id', loanDetails.loan_id)
+
+    loan.received_at = new Date().toISOString().slice(0, 10)
+    loan.status = 'RECEIVED'
+
+    await loan.save()
+
+    return loan
+  }
+
   async pay (loanDetails) {
     let loan = await this.loan.findByOrFail('id', loanDetails.loan_id)
 
