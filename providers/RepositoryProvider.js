@@ -6,6 +6,7 @@ const SchoolRepository = require('../app/Repositories/SchoolRepository')
 const LenderRepository = require('../app/Repositories/LenderRepository')
 const StudentRepository = require('../app/Repositories/StudentRepository')
 const GuarantorRepository = require('../app/Repositories/GuarantorRepository')
+const LoanRepository = require('../app/Repositories/LoanRepository')
 
 class RepositoryProvider extends ServiceProvider {
   /**
@@ -30,6 +31,9 @@ class RepositoryProvider extends ServiceProvider {
     }),
     this.app.bind('App/Repositories/GuarantorRepository', () => {
       return new GuarantorRepository(use('App/Models/Guarantor'))
+    }),
+    this.app.bind('App/Repositories/LoanRepository', () => {
+      return new LoanRepository(use('App/Models/Loan'))
     })
   }
 

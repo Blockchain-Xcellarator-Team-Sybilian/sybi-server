@@ -100,6 +100,12 @@ Route.group(() => {
   Route.delete('/:id', 'DeleteController.delete')
 }).namespace('Guarantor').prefix('guarantors').middleware('auth')
 
+/** Loan */
+Route.group(() => {
+  // Apply
+  Route.post('/apply', 'ApplyController.apply')
+}).namespace('Loan').prefix('loan')
+
 /** Document */
 Route.group(() => {
   // Upload

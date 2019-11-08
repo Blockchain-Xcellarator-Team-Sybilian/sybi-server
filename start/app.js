@@ -59,6 +59,7 @@ const aliases = {
   LenderRepository: 'App/Repositories/LenderRepository',
   StudentRepository: 'App/Repositories/StudentRepository',
   GuarantorRepository: 'App/Repositories/GuarantorRepository',
+  LoanRepository: 'App/Repositories/LoanRepository',
   ResponseHelper: 'App/Helpers/ResponseHelper'
 }
 
