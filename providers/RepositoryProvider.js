@@ -33,7 +33,7 @@ class RepositoryProvider extends ServiceProvider {
       return new GuarantorRepository(use('App/Models/Guarantor'))
     }),
     this.app.bind('App/Repositories/LoanRepository', () => {
-      return new LoanRepository(use('App/Models/Loan'))
+      return new LoanRepository(use('App/Models/Loan'), use('GeneratorHelper'))
     })
   }
 

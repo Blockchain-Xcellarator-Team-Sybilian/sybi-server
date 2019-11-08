@@ -72,6 +72,7 @@ module.exports = {
       }
     },
     error: {
+      loan_limit: 'LOAN_LIMIT',
       bad_request: 'BAD_REQUEST',
       unauthorized: 'UNAUTHORIZED',
       invalid_token: 'INVALID_TOKEN',
