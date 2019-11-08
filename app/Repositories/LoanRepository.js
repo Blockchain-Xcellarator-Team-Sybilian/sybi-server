@@ -81,6 +81,17 @@ class LoanRepository {
     return loan
   }
 
+  async pay (loanDetails) {
+    let loan = await this.loan.findByOrFail('id', loanDetails.loan_id)
+
+    loan.paid_at = new Date().toISOString().slice(0, 10)
+    loan.status = 'PAID'
+
+    await loan.save()
+
+    return loan
+  }
+
   async checkExistingLoan (loanDetails) {
     let existingLoan = await this.loan.query()
       .where('student_id', loanDetails.student_id)
