@@ -1,6 +1,8 @@
 'use strict'
 
 const crypto = use('crypto')
+const sha256 = require('sha256-file')
+const md5 = require('md5-file')
 
 class GeneratorHelper {
   async code (length) {
@@ -19,6 +21,14 @@ class GeneratorHelper {
     }
 
     return string
+  }
+
+  async sha256 (path) {
+    return sha256(path)
+  }
+
+  md5 (path) {
+    return md5(path)
   }
 }
   
