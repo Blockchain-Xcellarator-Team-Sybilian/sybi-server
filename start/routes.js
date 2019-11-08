@@ -109,6 +109,8 @@ Route.group(() => {
   Route.post('/verify', 'VerifyController.verify').validator('Loan/VerifyValidator')
   // Approve loan
   Route.post('/approve', 'ApproveController.approve').validator('Loan/ApproveValidator')
+  // Confirm loan
+  Route.post('/confirm', 'ConfirmController.confirm').validator('Loan/ConfirmValidator')
 }).namespace('Loan').prefix('loans').middleware('auth')
 
 /** Document */
