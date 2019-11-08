@@ -101,6 +101,8 @@ Route.group(() => {
 Route.group(() => {
   // Browse loans
   Route.get('/', 'BrowseController.browse')
+  // Read loan
+  Route.get('/:id', 'ReadController.read')
   // Apply loan
   Route.post('/apply', 'ApplyController.apply').validator('Loan/ApplyValidator')
 }).namespace('Loan').prefix('loans').middleware('auth')
