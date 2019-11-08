@@ -8,7 +8,6 @@ class LoanSchema extends Schema {
     this.create('loans', (table) => {
       table.increments()
       table.integer('student_id').unsigned().references('id').inTable('students')
-      table.integer('school_id').unsigned().references('id').inTable('schools')
       table.integer('lender_id').unsigned().references('id').inTable('lenders')
       table.string('code', 80).notNullable()
       table.string('status', 80).notNullable()
