@@ -17,7 +17,6 @@ class SchoolValidator {
       name: 'required',
       phone_number: 'required',
       email: 'required',
-      bank_account_number: 'required|unique:schools',
       address: 'required'
     }
   }
@@ -27,8 +26,6 @@ class SchoolValidator {
       'name.unique': 'Name is required.',
       'phone_number.required': 'Phone number is required.',
       'email.required': 'Email is required.',
-      'bank_account_number.required': 'Bank account number is required.',
-      'bank_account_number.unique': 'Bank account number already taken.',
       'address.required': 'Address type is required.'
     }
   }
