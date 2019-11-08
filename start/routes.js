@@ -76,9 +76,9 @@ Route.group(() => {
   // Read student
   Route.get('/:id', 'ReadController.read')
   // Edit student
-  Route.put('/:id', 'EditController.edit').validator('StudentValidator')
+  Route.put('/:id', 'EditController.edit').validator('Student/EditValidator')
   // Add student
-  Route.post('/', 'AddController.add').validator('StudentValidator')
+  Route.post('/', 'AddController.add').validator('Student/AddValidator')
   // Delete student
   Route.delete('/:id', 'DeleteController.delete')
 }).namespace('Student').prefix('students').middleware('auth')

@@ -3,7 +3,7 @@
 const { formatters } = use('Validator')
 const ValidationException = use('App/Exceptions/ValidationException')
 
-class StudentValidator {
+class EditValidator {
   get validateAll () {
     return true
   }
@@ -45,4 +45,4 @@ class StudentValidator {
   }
 }
 
-module.exports = StudentValidator
+module.exports = EditValidator
