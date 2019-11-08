@@ -27,6 +27,7 @@ class LoanRepository {
     loan.code = await this.generator.code(9)
     loan.status = 'APPLIED'
     loan.amount = loanDetails.amount
+    loan.applied_at = new Date().toISOString().slice(0, 10)
 
     await loan.save()
 
