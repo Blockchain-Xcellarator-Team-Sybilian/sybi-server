@@ -8,7 +8,7 @@ const LoanLimitException = use('App/Exceptions/LoanLimitException')
 class ApproveController {
   async approve ({ request, response, transform }) {
     // Get request body
-    const loanDetails = request.only(['loan_id', 'due_amount', 'due_at'])
+    const loanDetails = request.only(['loan_id', 'lender_id', 'due_amount', 'due_at'])
     
     // Process
     let loan = await transform.item(LoanRepository.approve(loanDetails), 'LoanTransformer')

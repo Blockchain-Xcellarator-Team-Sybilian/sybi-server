@@ -15,6 +15,7 @@ class ApproveValidator {
   get rules () {
     return {
       loan_id: 'required',
+      lender_id: 'required',
       due_amount: 'required',
       due_at: 'required'
     }
@@ -23,6 +24,7 @@ class ApproveValidator {
   get messages () {
     return {
       'loan_id.required': 'Loan is required.',
+      'lender_id.required': 'Lender is required.',
       'due_amount.required': 'Due amount is required.',
       'due_at.required': 'Due date is required.'
     }

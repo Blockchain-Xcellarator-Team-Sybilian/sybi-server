@@ -48,6 +48,7 @@ class LoanRepository {
   async approve (loanDetails) {
     let loan = await this.loan.findByOrFail('id', loanDetails.loan_id)
 
+    loan.lender_id = loanDetails.lender_id
     loan.due_amount = loanDetails.due_amount
     loan.due_at = loanDetails.due_at
     loan.approved_at = new Date().toISOString().slice(0, 10)
