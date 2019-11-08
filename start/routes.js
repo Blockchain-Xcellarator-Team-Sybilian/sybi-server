@@ -22,9 +22,9 @@ Route.get('/', 'HomeController.index')
 /** Token */
 Route.group(() => {
   // Request
-  Route.post('/request', 'RequestController.request').validator('RequestTokenValidator')
+  Route.post('/request', 'RequestController.request').validator('Token/RequestValidator')
   // Refresh
-  Route.post('/refresh', 'RefreshController.refresh').validator('RefreshTokenValidator')
+  Route.post('/refresh', 'RefreshController.refresh').validator('Token/RefreshValidator')
 }).namespace('Token').prefix('token').middleware('guest')
 
 /** Users */
