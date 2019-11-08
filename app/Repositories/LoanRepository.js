@@ -34,6 +34,16 @@ class LoanRepository {
     return loan
   }
 
+  async verify (loanId) {
+    let loan = await this.loan.findByOrFail('id', loanId)
+
+    loan.verified_at = new Date().toISOString().slice(0, 10)
+
+    await loan.save()
+
+    return loan
+  }
+
   async checkExistingLoan (loanDetails) {
     let existingLoan = await this.loan.query()
       .where('student_id', loanDetails.student_id)
