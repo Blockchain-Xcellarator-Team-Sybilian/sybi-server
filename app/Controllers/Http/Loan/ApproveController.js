@@ -3,7 +3,6 @@
 const Config = use('Config')
 const ResponseHelper = use('ResponseHelper')
 const LoanRepository = use('LoanRepository')
-const LoanLimitException = use('App/Exceptions/LoanLimitException')
 
 class ApproveController {
   async approve ({ request, response, transform }) {
