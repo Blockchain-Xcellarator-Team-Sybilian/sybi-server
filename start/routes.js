@@ -90,9 +90,9 @@ Route.group(() => {
   // Read guarantor
   Route.get('/:id', 'ReadController.read')
   // Edit guarantor
-  Route.put('/:id', 'EditController.edit').validator('GuarantorValidator')
+  Route.put('/:id', 'EditController.edit').validator('Guarantor/EditValidator')
   // Add guarantor
-  Route.post('/', 'AddController.add').validator('GuarantorValidator')
+  Route.post('/', 'AddController.add').validator('Guarantor/AddValidator')
   // Delete guarantor
   Route.delete('/:id', 'DeleteController.delete')
 }).namespace('Guarantor').prefix('guarantors').middleware('auth')

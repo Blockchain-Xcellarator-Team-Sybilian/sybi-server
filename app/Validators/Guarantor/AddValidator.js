@@ -3,7 +3,7 @@
 const { formatters } = use('Validator')
 const ValidationException = use('App/Exceptions/ValidationException')
 
-class GuarantorValidator {
+class AddValidator {
   get validateAll () {
     return true
   }
@@ -14,6 +14,7 @@ class GuarantorValidator {
 
   get rules () {
     return {
+      student_id: 'required',
       name: 'required',
       phone_number: 'required',
       email: 'required',
@@ -27,6 +28,7 @@ class GuarantorValidator {
 
   get messages () {
     return {
+      'student_id.required': 'Student is required.',
       'name.required': 'Name is required.',
       'phone_number.required': 'Phone number is required.',
       'email.required': 'Email is required.',
@@ -43,4 +45,4 @@ class GuarantorValidator {
   }
 }
 
-module.exports = GuarantorValidator
+module.exports = AddValidator
