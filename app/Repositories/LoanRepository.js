@@ -34,8 +34,8 @@ class LoanRepository {
     return loan
   }
 
-  async verify (loanId) {
-    let loan = await this.loan.findByOrFail('id', loanId)
+  async verify (loanDetails) {
+    let loan = await this.loan.findByOrFail('id', loanDetails.loan_id)
 
     loan.verified_at = new Date().toISOString().slice(0, 10)
 

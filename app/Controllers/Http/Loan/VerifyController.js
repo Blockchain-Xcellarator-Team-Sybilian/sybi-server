@@ -5,11 +5,11 @@ const ResponseHelper = use('ResponseHelper')
 const LoanRepository = use('LoanRepository')
 
 class VerifyController {
-  async verify ({ response, params, transform }) {
-    const loanId = params.id
+  async verify ({ request, response, transform }) {
+    const loanDetails = request.only(['loan_id'])
 
     // Process
-    let loan = await transform.item(LoanRepository.verify(loanId), 'LoanTransformer')
+    let loan = await transform.item(LoanRepository.verify(loanDetails), 'LoanTransformer')
 
     // Set response body
     const responseStatus = Config.get('response.status.success')
