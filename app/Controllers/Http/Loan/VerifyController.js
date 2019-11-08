@@ -13,7 +13,7 @@ class VerifyController {
 
     // Set response body
     const responseStatus = Config.get('response.status.success')
-    const responseCode = Config.get('response.code.success.loan.apply')
+    const responseCode = Config.get('response.code.success.loan.verify')
     const responseData = loan
     const responseBody = ResponseHelper.formatResponse(response, responseStatus, responseCode, responseData)
 
