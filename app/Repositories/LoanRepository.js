@@ -70,6 +70,17 @@ class LoanRepository {
     return loan
   }
 
+  async release (loanDetails) {
+    let loan = await this.loan.findByOrFail('id', loanDetails.loan_id)
+
+    loan.released_at = new Date().toISOString().slice(0, 10)
+    loan.status = 'RELEASED'
+
+    await loan.save()
+
+    return loan
+  }
+
   async checkExistingLoan (loanDetails) {
     let existingLoan = await this.loan.query()
       .where('student_id', loanDetails.student_id)

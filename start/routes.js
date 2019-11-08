@@ -111,12 +111,14 @@ Route.group(() => {
   Route.post('/approve', 'ApproveController.approve').validator('Loan/ApproveValidator')
   // Confirm loan
   Route.post('/confirm', 'ConfirmController.confirm').validator('Loan/ConfirmValidator')
+  // Release loan
+  Route.post('/release', 'ReleaseController.release').validator('Loan/ReleaseValidator')
 }).namespace('Loan').prefix('loans').middleware('auth')
 
 /** Document */
 Route.group(() => {
   // Upload document
   Route.post('/upload', 'UploadController.upload')
-  // Download document
+  // Download documents
   Route.get('/download', 'DownloadController.download')
-}).namespace('Document').prefix('document').middleware('auth')
+}).namespace('Document').prefix('documents').middleware('auth')
