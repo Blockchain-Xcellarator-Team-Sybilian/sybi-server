@@ -10,7 +10,7 @@ class ReadController {
     const studentId = params.id
 
     // Process
-    let student = await transform.include('school,guarantor').item(StudentRepository.read(studentId), 'StudentTransformer')
+    let student = await transform.item(StudentRepository.read(studentId), 'StudentTransformer')
 
     // Set response body
     const responseStatus = Config.get('response.status.success')

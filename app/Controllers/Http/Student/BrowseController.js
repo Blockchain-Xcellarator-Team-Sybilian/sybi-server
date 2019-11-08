@@ -7,7 +7,7 @@ const StudentRepository = use('StudentRepository')
 class BrowseController {
   async browse ({ response, transform }) {
     // Process
-    let students = await transform.include('school,guarantor').collection(StudentRepository.browse(), 'StudentTransformer')
+    let students = await transform.collection(StudentRepository.browse(), 'StudentTransformer')
 
     if (students === undefined || students.length == 0) {
       students = null
