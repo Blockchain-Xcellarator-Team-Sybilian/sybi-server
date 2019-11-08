@@ -61,9 +61,7 @@ module.exports = {
       loan: {
         browse: 'BROWSE_LOANS',
         read: 'READ_LOAN',
-        edit: 'EDIT_LOAN',
-        add: 'ADD_LOAN',
-        delete: 'DELETE_LOAN'
+        apply: 'APPLY_LOAN'
       },
       document: {
         browse: 'BROWSE_DOCUMENTS',

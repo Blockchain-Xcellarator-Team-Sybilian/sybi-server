@@ -19,9 +19,6 @@ const Route = use('Route')
 // Home
 Route.get('/', 'HomeController.index')
 
-// Register
-Route.post('/register', 'User/AddController.add').validator('UserValidator')
-
 /** Token */
 Route.group(() => {
   // Request
@@ -103,8 +100,8 @@ Route.group(() => {
 /** Loan */
 Route.group(() => {
   // Apply
-  Route.post('/apply', 'ApplyController.apply')
-}).namespace('Loan').prefix('loan')
+  Route.post('/apply', 'ApplyController.apply').validator('Loan/ApplyValidator')
+}).namespace('Loan').prefix('loan').middleware('auth')
 
 /** Document */
 Route.group(() => {
@@ -112,4 +109,4 @@ Route.group(() => {
   Route.post('/upload', 'UploadController.upload')
   // Download
   Route.get('/download', 'DownloadController.download')
-}).namespace('Document').prefix('document')
+}).namespace('Document').prefix('document').middleware('auth')

@@ -5,7 +5,7 @@ const Model = use('Model')
 
 class Loan extends Model {
   student () {
-    return this.hasOne('App/Models/Student')
+    return this.belongsTo('App/Models/Student')
   }
   
   lender () {
