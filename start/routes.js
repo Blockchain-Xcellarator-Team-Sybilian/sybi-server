@@ -99,14 +99,16 @@ Route.group(() => {
 
 /** Loan */
 Route.group(() => {
-  // Apply
+  // Browse loans
+  Route.get('/', 'BrowseController.browse')
+  // Apply loan
   Route.post('/apply', 'ApplyController.apply').validator('Loan/ApplyValidator')
-}).namespace('Loan').prefix('loan').middleware('auth')
+}).namespace('Loan').prefix('loans').middleware('auth')
 
 /** Document */
 Route.group(() => {
-  // Upload
+  // Upload document
   Route.post('/upload', 'UploadController.upload')
-  // Download
+  // Download document
   Route.get('/download', 'DownloadController.download')
 }).namespace('Document').prefix('document').middleware('auth')
