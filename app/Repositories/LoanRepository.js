@@ -103,6 +103,17 @@ class LoanRepository {
     return loan
   }
 
+  async cancel (loanDetails) {
+    let loan = await this.loan.findByOrFail('id', loanDetails.loan_id)
+
+    loan.cancelled_at = new Date().toISOString().slice(0, 10)
+    loan.status = 'CANCELLED'
+
+    await loan.save()
+
+    return loan
+  }
+
   async checkExistingLoanCount (loanDetails) {
     let existingLoanCount = await this.loan.query()
       .where('student_id', loanDetails.student_id)
