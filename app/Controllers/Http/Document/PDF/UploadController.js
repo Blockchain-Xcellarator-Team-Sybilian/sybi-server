@@ -20,7 +20,7 @@ class UploadController {
     const loanCode = loan.code
     const loanDirectory = Helpers.tmpPath('loans/') + loanCode + '/PDF/'
 
-    // Move document to loans/LOAN_CODE folder
+    // Move document to dedicated loans folder
     await document.move(loanDirectory, {
       name: documentName,
       overwrite: true
