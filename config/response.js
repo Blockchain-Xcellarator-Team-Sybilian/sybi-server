@@ -62,12 +62,14 @@ module.exports = {
         browse: 'BROWSE_LOANS',
         read: 'READ_LOAN',
         apply: 'APPLY_LOAN',
-        verify: 'VERIFY_LOAN',
         approve: 'APPROVE_LOAN',
+        accept: 'ACCEPT_LOAN',
         confirm: 'CONFIRM_LOAN',
         release: 'RELEASE_LOAN',
         receive: 'RECEIVE_LOAN',
-        pay: 'PAY_LOAN'
+        pay: 'PAY_LOAN',
+        cancel: 'CANCEL_LOAN',
+        deny: 'DENY_LOAN',
       },
       document: {
         browse: 'BROWSE_DOCUMENTS',
