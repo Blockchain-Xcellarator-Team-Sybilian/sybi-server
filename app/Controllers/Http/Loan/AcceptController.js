@@ -6,9 +6,8 @@ const LoanRepository = use('LoanRepository')
 
 class AcceptController {
   async accept ({ request, response, transform }) {
-    // Get request body
-    const loanDetails = request.only(['loan_id', 'lender_id', 'due_amount', 'due_at'])
-    
+    const loanDetails = request.only(['loan_id'])
+
     // Process
     let loan = await transform.item(LoanRepository.accept(loanDetails), 'LoanTransformer')
 

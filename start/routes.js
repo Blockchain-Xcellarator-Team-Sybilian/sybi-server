@@ -107,10 +107,10 @@ Route.group(() => {
   Route.post('/apply', 'ApplyController.apply').validator('Loan/ApplyValidator')
   // Endorse loan
   Route.post('/endorse', 'EndorseController.endorse').validator('Loan/EndorseValidator')
+  // Approve loan
+  Route.post('/approve', 'ApproveController.approve').validator('Loan/ApproveValidator')
   // Accept loan
   Route.post('/accept', 'AcceptController.accept').validator('Loan/AcceptValidator')
-  // Confirm loan
-  Route.post('/confirm', 'ConfirmController.confirm').validator('Loan/ConfirmValidator')
   // Release loan
   Route.post('/release', 'ReleaseController.release').validator('Loan/ReleaseValidator')
   // Receive loan

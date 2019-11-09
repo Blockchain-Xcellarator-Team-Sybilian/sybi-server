@@ -45,25 +45,25 @@ class LoanRepository {
     return loan
   }
 
-  async accept (loanDetails) {
+  async approve (loanDetails) {
     let loan = await this.loan.findByOrFail('id', loanDetails.loan_id)
 
     loan.lender_id = loanDetails.lender_id
     loan.due_amount = loanDetails.due_amount
     loan.due_at = loanDetails.due_at
-    loan.accepted_at = new Date().toISOString()
-    loan.status = 'ACCEPTED'
+    loan.approved_at = new Date().toISOString()
+    loan.status = 'APPROVED'
 
     await loan.save()
 
     return loan
   }
 
-  async confirm (loanDetails) {
+  async accept (loanDetails) {
     let loan = await this.loan.findByOrFail('id', loanDetails.loan_id)
 
-    loan.confirmed_at = new Date().toISOString()
-    loan.status = 'CONFIRMED'
+    loan.accepted_at = new Date().toISOString()
+    loan.status = 'ACCEPTED'
 
     await loan.save()
 

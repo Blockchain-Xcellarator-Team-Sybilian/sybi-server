@@ -3,7 +3,7 @@
 const { formatters } = use('Validator')
 const ValidationException = use('App/Exceptions/ValidationException')
 
-class ConfirmValidator {
+class ApproveValidator {
   get validateAll () {
     return true
   }
@@ -14,13 +14,19 @@ class ConfirmValidator {
 
   get rules () {
     return {
-      loan_id: 'required'
+      loan_id: 'required',
+      lender_id: 'required',
+      due_amount: 'required',
+      due_at: 'required'
     }
   }
 
   get messages () {
     return {
-      'loan_id.required': 'Loan is required.'
+      'loan_id.required': 'Loan is required.',
+      'lender_id.required': 'Lender is required.',
+      'due_amount.required': 'Due amount is required.',
+      'due_at.required': 'Due date is required.'
     }
   }
 
@@ -29,4 +35,4 @@ class ConfirmValidator {
   }
 }
 
-module.exports = ConfirmValidator
+module.exports = ApproveValidator
