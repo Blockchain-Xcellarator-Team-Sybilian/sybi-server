@@ -119,6 +119,8 @@ Route.group(() => {
   Route.post('/pay', 'PayController.pay').validator('Loan/PayValidator')
   // Cancel loan
   Route.post('/cancel', 'CancelController.cancel').validator('Loan/CancelValidator')
+  // Deny loan
+  Route.post('/deny', 'DenyController.deny').validator('Loan/DenyValidator')
 
 }).namespace('Loan').prefix('loans').middleware('auth')
 

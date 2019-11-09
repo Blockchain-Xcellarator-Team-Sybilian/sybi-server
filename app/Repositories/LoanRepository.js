@@ -114,6 +114,17 @@ class LoanRepository {
     return loan
   }
 
+  async deny (loanDetails) {
+    let loan = await this.loan.findByOrFail('id', loanDetails.loan_id)
+
+    loan.denied_at = new Date().toISOString().slice(0, 10)
+    loan.status = 'DENIED'
+
+    await loan.save()
+
+    return loan
+  }
+
   async checkExistingLoanCount (loanDetails) {
     let existingLoanCount = await this.loan.query()
       .where('student_id', loanDetails.student_id)
