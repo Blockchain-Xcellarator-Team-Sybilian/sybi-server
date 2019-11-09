@@ -105,15 +105,10 @@ Route.group(() => {
   Route.get('/:id', 'ReadController.read')
   // Apply loan
   Route.post('/apply', 'ApplyController.apply').validator('Loan/ApplyValidator')
-  
-  // Verify loan
-  Route.post('/verify', 'VerifyController.verify').validator('Loan/VerifyValidator')
-
+  // Approve loan
+  Route.post('/approve', 'ApproveController.approve').validator('Loan/ApproveValidator')
   // Accept loan
   Route.post('/accept', 'AcceptController.accept').validator('Loan/AcceptValidator')
-
-
-  
 
 
   

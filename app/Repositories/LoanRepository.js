@@ -34,11 +34,11 @@ class LoanRepository {
     return loan
   }
 
-  async verify (loanDetails) {
+  async approve (loanDetails) {
     let loan = await this.loan.findByOrFail('id', loanDetails.loan_id)
 
-    loan.verified_at = new Date().toISOString().slice(0, 10)
-    loan.status = 'VERIFIED'
+    loan.approved_at = new Date().toISOString().slice(0, 10)
+    loan.status = 'APPROVED'
 
     await loan.save()
 
@@ -51,7 +51,7 @@ class LoanRepository {
     loan.lender_id = loanDetails.lender_id
     loan.due_amount = loanDetails.due_amount
     loan.due_at = loanDetails.due_at
-    loan.approved_at = new Date().toISOString().slice(0, 10)
+    loan.accepted_at = new Date().toISOString().slice(0, 10)
     loan.status = 'ACCEPTED'
 
     await loan.save()

@@ -4,16 +4,16 @@ const Config = use('Config')
 const ResponseHelper = use('ResponseHelper')
 const LoanRepository = use('LoanRepository')
 
-class VerifyController {
-  async verify ({ request, response, transform }) {
+class ApproveController {
+  async approve ({ request, response, transform }) {
     const loanDetails = request.only(['loan_id'])
 
     // Process
-    let loan = await transform.item(LoanRepository.verify(loanDetails), 'LoanTransformer')
+    let loan = await transform.item(LoanRepository.approve(loanDetails), 'LoanTransformer')
 
     // Set response body
     const responseStatus = Config.get('response.status.success')
-    const responseCode = Config.get('response.code.success.loan.verify')
+    const responseCode = Config.get('response.code.success.loan.approve')
     const responseData = loan
     const responseBody = ResponseHelper.formatResponse(response, responseStatus, responseCode, responseData)
 
@@ -21,4 +21,4 @@ class VerifyController {
   }
 }
 
-module.exports = VerifyController
+module.exports = ApproveController
