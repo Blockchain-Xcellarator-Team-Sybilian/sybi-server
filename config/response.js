@@ -73,7 +73,9 @@ module.exports = {
       },
       document: {
         browse: 'BROWSE_DOCUMENTS',
-        read: 'READ_DOCUMENT'
+        read: 'READ_DOCUMENT',
+        add: 'ADD_DOCUMENT'
+
       }
     },
     error: {
