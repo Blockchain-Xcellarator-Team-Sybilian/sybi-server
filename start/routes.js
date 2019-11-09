@@ -121,7 +121,6 @@ Route.group(() => {
   Route.post('/cancel', 'CancelController.cancel').validator('Loan/CancelValidator')
   // Deny loan
   Route.post('/deny', 'DenyController.deny').validator('Loan/DenyValidator')
-
 }).namespace('Loan').prefix('loans').middleware('auth')
 
 /** Document */
