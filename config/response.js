@@ -62,7 +62,7 @@ module.exports = {
         browse: 'BROWSE_LOANS',
         read: 'READ_LOAN',
         apply: 'APPLY_LOAN',
-        approve: 'APPROVE_LOAN',
+        endorse: 'ENDORSE_LOAN',
         accept: 'ACCEPT_LOAN',
         confirm: 'CONFIRM_LOAN',
         release: 'RELEASE_LOAN',

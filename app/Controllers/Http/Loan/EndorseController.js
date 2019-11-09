@@ -4,16 +4,16 @@ const Config = use('Config')
 const ResponseHelper = use('ResponseHelper')
 const LoanRepository = use('LoanRepository')
 
-class ApproveController {
-  async approve ({ request, response, transform }) {
+class EndorseController {
+  async endorse ({ request, response, transform }) {
     const loanDetails = request.only(['loan_id'])
 
     // Process
-    let loan = await transform.item(LoanRepository.approve(loanDetails), 'LoanTransformer')
+    let loan = await transform.item(LoanRepository.endorse(loanDetails), 'LoanTransformer')
 
     // Set response body
     const responseStatus = Config.get('response.status.success')
-    const responseCode = Config.get('response.code.success.loan.approve')
+    const responseCode = Config.get('response.code.success.loan.endorse')
     const responseData = loan
     const responseBody = ResponseHelper.formatResponse(response, responseStatus, responseCode, responseData)
 
@@ -21,4 +21,4 @@ class ApproveController {
   }
 }
 
-module.exports = ApproveController
+module.exports = EndorseController

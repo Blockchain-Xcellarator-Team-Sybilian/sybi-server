@@ -34,11 +34,11 @@ class LoanRepository {
     return loan
   }
 
-  async approve (loanDetails) {
+  async endorse (loanDetails) {
     let loan = await this.loan.findByOrFail('id', loanDetails.loan_id)
 
-    loan.approved_at = new Date().toISOString()
-    loan.status = 'APPROVED'
+    loan.endorsed_at = new Date().toISOString()
+    loan.status = 'ENDORSED'
 
     await loan.save()
 
