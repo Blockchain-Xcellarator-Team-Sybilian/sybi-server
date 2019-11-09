@@ -125,8 +125,8 @@ Route.group(() => {
 
 /** Document */
 Route.group(() => {
-  // Upload document
-  Route.post('/upload', 'UploadController.upload')
-  // Download documents
-  Route.get('/download', 'DownloadController.download')
+  // Upload PDF document
+  Route.post('/pdf/upload', 'PDF/UploadController.upload')
+  // Upload PNG document
+  Route.post('/png/upload', 'PNG/UploadController.upload')
 }).namespace('Document').prefix('documents').middleware('auth')
