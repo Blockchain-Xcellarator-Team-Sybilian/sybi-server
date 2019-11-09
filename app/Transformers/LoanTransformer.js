@@ -12,7 +12,8 @@ class LoanTransformer extends BumblebeeTransformer {
   static get defaultInclude () {
     return [
       'student',
-      'lender'
+      'lender',
+      'documents'
     ]
   }
 
@@ -47,6 +48,10 @@ class LoanTransformer extends BumblebeeTransformer {
 
   includeLender (model) {
     return this.item(model.getRelated('lender'), 'LenderTransformer')
+  }
+
+  includeDocuments (model) {
+    return this.item(model.getRelated('documents'), 'DocumentTransformer')
   }
 }
 

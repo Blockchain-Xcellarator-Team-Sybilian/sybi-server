@@ -11,6 +11,11 @@ class Loan extends Model {
   lender () {
     return this.belongsTo('App/Models/Lender')
   }
+
+  documents () {
+    return this.hasMany('App/Models/Document')
+  }
+
 }
 
 module.exports = Loan
