@@ -31,12 +31,15 @@ class LoanTransformer extends BumblebeeTransformer {
       due_amount: model.due_amount,
       due_at: model.due_at,
       applied_at: model.applied_at,
-      verified_at: model.verified_at,
       approved_at: model.approved_at,
+      accepted_at: model.accepted_at,
       confirmed_at: model.confirmed_at,
       released_at: model.released_at,
       received_at: model.received_at,
       paid_at: model.paid_at,
+      due_at: model.due_at,
+      cancelled_at: model.cancelled_at,
+      denied_at: model.denied_at,
       created_at: model.created_at,
       updated_at: model.updated_at
     }
