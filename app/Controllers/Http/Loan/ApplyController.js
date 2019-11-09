@@ -11,9 +11,9 @@ class ApplyController {
     const loanDetails = request.only(['student_id', 'description', 'amount'])
     
     // Count existing unpaid loans
-    let existingLoan = await LoanRepository.checkExistingLoan(loanDetails)
+    let existingLoanCount = await LoanRepository.checkExistingLoanCount(loanDetails)
 
-    if (existingLoan >= Config.get('loan.limit_count')) {
+    if (existingLoanCount >= Config.get('loan.limit_count')) {
       throw new LoanLimitException
     }
     

@@ -103,13 +103,13 @@ class LoanRepository {
     return loan
   }
 
-  async checkExistingLoan (loanDetails) {
-    let existingLoan = await this.loan.query()
+  async checkExistingLoanCount (loanDetails) {
+    let existingLoanCount = await this.loan.query()
       .where('student_id', loanDetails.student_id)
       .where('paid_at', null)
       .getCount()
 
-    return existingLoan
+    return existingLoanCount
   }
 }
 
