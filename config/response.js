@@ -71,14 +71,12 @@ module.exports = {
       },
       document: {
         browse: 'BROWSE_DOCUMENTS',
-        read: 'READ_DOCUMENT',
-        edit: 'EDIT_DOCUMENT',
-        add: 'ADD_DOCUMENT',
-        delete: 'DELETE_DOCUMENT'
+        read: 'READ_DOCUMENT'
       }
     },
     error: {
       loan_limit: 'LOAN_LIMIT',
+      document_exists: 'DOCUMENT_EXISTS',
       bad_request: 'BAD_REQUEST',
       unauthorized: 'UNAUTHORIZED',
       invalid_token: 'INVALID_TOKEN',

@@ -1,31 +1,46 @@
 'use strict'
 
 const Helpers = use('Helpers')
+const LoanRepository = use('LoanRepository')
 const GeneratorHelper = use('GeneratorHelper')
+const DocumentRepository = use('DocumentRepository')
+const DocumentExistsException = use('App/Exceptions/DocumentExistsException')
 
 class UploadController {
-  async upload ({ request, response }) {
+  async upload ({ request, response, transform }) {
     // Get request body
-    const documentDetails = request.only(['loan_id', 'name', 'comment'])
-    const documentName = await GeneratorHelper.code(18)
+    const documentDetails = request.only(['loan_id', 'comment'])
+    const documentName = await GeneratorHelper.code(18) + '.pdf'
     const document = request.file('document', {
       types: ['pdf'],
       size: '5mb'
-    })    
+    })
+
+    let loan = await transform.item(LoanRepository.read(documentDetails.loan_id), 'LoanTransformer')
+    const loanCode = loan.code
+    const loanDirectory = Helpers.tmpPath('loans/') + loanCode + '/'
 
     // Move document to loans/LOAN_CODE folder
-    // Hash document
-    // Check if hash already exists
-    // Save document details
-
-    await document.move(Helpers.tmpPath('loans'), {
-      name: documentName + '.pdf',
+    await document.move(loanDirectory, {
+      name: documentName,
       overwrite: true
     })
 
-    const checksum = await GeneratorHelper.sha256(Helpers.tmpPath('loans/' + documentName  + '.pdf'))
+    // Hash document
+    const documentChecksum = await GeneratorHelper.sha256(loanDirectory + documentName)
 
-    return checksum
+    // Check document already exists
+    const existingDocumentCount = await DocumentRepository.checkExistingDocumentCount(documentChecksum)
+    
+    if (existingDocumentCount > 0) {
+      throw new DocumentExistsException
+    }
+
+    return existingDocumentCount
+
+    // Save document details
+
+    return documentChecksum
   }
 }
 
