@@ -17,7 +17,6 @@ class AddValidator {
       user_id: 'required',
       name: 'required',
       phone_number: 'required',
-      email: 'required',
       address: 'required',
       bank_account_number: 'required'
     }
@@ -28,7 +27,6 @@ class AddValidator {
       'user_id.required': 'User is required.',
       'name.required': 'Name is required.',
       'phone_number.required': 'Phone number is required.',
-      'email.required': 'Email is required.',
       'address.required': 'Address is required.',
       'bank_account_number.required': 'Bank account number is required.'
     }
