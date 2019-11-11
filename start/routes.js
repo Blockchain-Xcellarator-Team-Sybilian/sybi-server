@@ -131,4 +131,8 @@ Route.group(() => {
   Route.post('/pdf/upload', 'PDF/UploadController.upload')
   // Upload PNG document
   Route.post('/png/upload', 'PNG/UploadController.upload')
+  // Download PDF document
+  Route.get('/pdf/download/:loanCode/:documentName', 'PDF/DownloadController.download')
+  // Download PNG document
+  Route.get('/png/download/:loanCode/:documentName', 'PNG/DownloadController.download')
 }).namespace('Document').prefix('documents').middleware('auth')
