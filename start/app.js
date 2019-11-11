@@ -21,8 +21,7 @@ const providers = [
   '@adonisjs/lucid/providers/LucidProvider',
   '@adonisjs/validator/providers/ValidatorProvider',
   '@adonisjs/drive/providers/DriveProvider',
-  'adonis-bumblebee/providers/BumblebeeProvider',
-  'adonis-pdf/providers/PdfProvider',
+  'adonis-bumblebee/providers/BumblebeeProvider'
   // Custom providers
   path.join(__dirname, '..', 'providers', 'RepositoryProvider'),
   path.join(__dirname, '..', 'providers', 'HelperProvider')
