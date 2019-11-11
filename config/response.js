@@ -75,7 +75,6 @@ module.exports = {
         browse: 'BROWSE_DOCUMENTS',
         read: 'READ_DOCUMENT',
         add: 'ADD_DOCUMENT'
-
       }
     },
     error: {
