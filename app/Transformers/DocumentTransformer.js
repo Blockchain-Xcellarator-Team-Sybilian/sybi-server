@@ -16,7 +16,8 @@ class DocumentTransformer extends BumblebeeTransformer {
     return {
       id: model.id,
       loan_id: model.loan_id,
-      name: model.name,      
+      name: model.name,
+      type: model.type,
       comment: model.comment,
       created_at: model.created_at,
       updated_at: model.updated_at

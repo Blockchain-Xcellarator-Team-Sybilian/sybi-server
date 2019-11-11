@@ -12,7 +12,7 @@ class UploadController {
   async upload ({ request, response, transform }) {
     // Get request body
     const documentDetails = request.only(['loan_id', 'comment'])
-    const documentFile = request.file('document', {
+    const documentFile = request.file('pdf', {
       types: ['pdf'],
       size: '5mb'
     })
@@ -34,6 +34,7 @@ class UploadController {
 
     // Update document details
     documentDetails.name = documentName
+    documentDetails.type = 'PDF'
     documentDetails.path = documentDirectory
     documentDetails.checksum = documentChecksum
 

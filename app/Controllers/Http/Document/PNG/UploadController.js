@@ -1,6 +1,8 @@
 'use strict'
 
+const Config = use('Config')
 const Helpers = use('Helpers')
+const ResponseHelper = use('ResponseHelper')
 const LoanRepository = use('LoanRepository')
 const GeneratorHelper = use('GeneratorHelper')
 const DocumentRepository = use('DocumentRepository')
@@ -10,37 +12,49 @@ class UploadController {
   async upload ({ request, response, transform }) {
     // Get request body
     const documentDetails = request.only(['loan_id', 'comment'])
-    const documentName = await GeneratorHelper.code(18) + '.pdf'
-    const document = request.file('document', {
-      types: ['pdf'],
+    const documentFile = request.file('png', {
+      types: ['image'],
       size: '5mb'
     })
 
+    // Read loan details
     let loan = await transform.item(LoanRepository.read(documentDetails.loan_id), 'LoanTransformer')
     const loanCode = loan.code
-    const loanDirectory = Helpers.tmpPath('loans/') + loanCode + '/'
+    const documentDirectory = Helpers.tmpPath('loans/') + loanCode + '/PNG/'
+    const documentName = await GeneratorHelper.code(6) + '.png'
 
-    // Move document to loans/LOAN_CODE folder
-    await document.move(loanDirectory, {
+    // Move document to folder
+    await documentFile.move(documentDirectory, {
       name: documentName,
       overwrite: true
     })
 
-    // Hash document
-    const documentChecksum = await GeneratorHelper.sha256(loanDirectory + documentName)
+    // Generate document checksum
+    const documentChecksum = await GeneratorHelper.sha256(documentDirectory + documentName)
 
-    // Check document already exists
+    // Update document details
+    documentDetails.name = documentName
+    documentDetails.type = 'PNG'
+    documentDetails.path = documentDirectory
+    documentDetails.checksum = documentChecksum
+
+    // Check if document already exists
     const existingDocumentCount = await DocumentRepository.checkExistingDocumentCount(documentChecksum)
     
     if (existingDocumentCount > 0) {
       throw new DocumentExistsException
     }
 
-    return existingDocumentCount
-
     // Save document details
+    let document = await transform.item(DocumentRepository.add(documentDetails), 'DocumentTransformer')
 
-    return documentChecksum
+    // Set response body
+    const responseStatus = Config.get('response.status.success')
+    const responseCode = Config.get('response.code.success.document.add')
+    const responseData = document
+    const responseBody = ResponseHelper.formatResponse(response, responseStatus, responseCode, responseData)
+
+    return responseBody
   }
 }
 
