@@ -8,7 +8,7 @@ class EditController {
   async edit ({ request, response, params, transform }) {
     // Get request body
     const schoolId = params.id
-    const schoolDetails = request.only(['name', 'phone_number', 'email', 'address'])
+    const schoolDetails = request.only(['name', 'phone_number', 'email', 'address', 'bank_account_number'])
 
     // Process
     let school = await transform.item(SchoolRepository.edit(schoolId, schoolDetails), 'SchoolTransformer')

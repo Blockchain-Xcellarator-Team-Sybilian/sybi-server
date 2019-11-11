@@ -8,7 +8,7 @@ class EditController {
   async edit ({ request, response, params, transform }) {
     // Get request body
     const lenderId = params.id
-    const lenderDetails = request.only(['name', 'phone_number', 'email', 'address'])
+    const lenderDetails = request.only(['name', 'phone_number', 'email', 'address', 'bank_account_number'])
 
     // Process
     let lender = await transform.item(LenderRepository.edit(lenderId, lenderDetails), 'LenderTransformer')
