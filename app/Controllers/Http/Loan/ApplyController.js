@@ -1,8 +1,12 @@
 'use strict'
 
+const Drive = use('Drive')
 const Config = use('Config')
-const ResponseHelper = use('ResponseHelper')
+const Helpers = use('Helpers')
 const LoanRepository = use('LoanRepository')
+const ResponseHelper = use('ResponseHelper')
+const DocumentHelper = use('DocumentHelper')
+const GeneratorHelper = use('GeneratorHelper')
 const LoanLimitException = use('App/Exceptions/LoanLimitException')
 
 class ApplyController {
@@ -19,6 +23,23 @@ class ApplyController {
     
     // Process
     let loan = await transform.item(LoanRepository.apply(loanDetails), 'LoanTransformer')
+
+    // Generate document path
+    const documentDirectory = Helpers.tmpPath('loans/') + loan.code + '/PDF/'
+    const documentName = await GeneratorHelper.code(6) + '.pdf'
+    const documentPath = documentDirectory + documentName
+    await Drive.put(documentPath)
+
+    // Generate document content
+    const documentContent = {
+      name: loan.student.name,
+      phone: loan.student.phone_number,
+      email: loan.student.email,
+      amount: loan.amount
+    }
+    await DocumentHelper.generateLoanApplicationForm(documentPath, documentContent)
+
+    // Hash document
 
     // Set response body
     const responseStatus = Config.get('response.status.success')

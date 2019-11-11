@@ -9,18 +9,19 @@ class DocumentHelper {
     this.generator = generator
   }
 
-  async generatePDF (loanCode, content) {
-    const document = new PDFDocument;
-    const documentName = await this.generator.code(6) + '.pdf'
-    const documentDirectory = Helpers.tmpPath('loans/') + loanCode + '/PDF/'
+  async generateLoanApplicationForm (documentPath, documentContent) {
+    let document = new PDFDocument({ size: 'A4', margin: 50 });
     
-    document.pipe(fs.createWriteStream(documentDirectory + documentName))
-    document.fontSize(8)
-    document.text(content, {
-      width: 410,
-      align: 'left'
-    })
+    document
+      .text(`LOAN APPLICATION FORM`)
+      .moveDown()
+      .text(`Name: ${documentContent.name}`)
+      .text(`Phone: ${documentContent.phone}`)
+      .text(`Email: ${documentContent.email}`)
+      .text(`Amount: ${documentContent.amount}`)
+
     document.end()
+    document.pipe(fs.createWriteStream(documentPath))
   }
 }
   
