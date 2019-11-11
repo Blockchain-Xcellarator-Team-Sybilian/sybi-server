@@ -22,11 +22,11 @@ class DocumentRepository {
     let document = new this.document
 
     document.loan_id = documentDetails.loan_id
-    document.comment = documentDetails.comment
     document.name = documentDetails.name
+    document.type = documentDetails.type
+    document.comment = documentDetails.comment
     document.path = documentDetails.path
     document.checksum = documentDetails.checksum
-
 
     await document.save()
 
