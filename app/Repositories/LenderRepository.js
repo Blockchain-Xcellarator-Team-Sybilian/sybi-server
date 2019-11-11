@@ -2,8 +2,9 @@
 
 class LenderRepository {
 
-  constructor (lender) {
+  constructor (lender, encryption) {
     this.lender = lender
+    this.encryption = encryption
   }
 
   async browse () {
@@ -25,7 +26,7 @@ class LenderRepository {
     lender.phone_number = lenderDetails.phone_number
     lender.email = lenderDetails.email
     lender.address = lenderDetails.address
-    lender.bank_account_number = lenderDetails.bank_account_number
+    lender.bank_account_number = this.encryption.encrypt(lenderDetails.bank_account_number)
 
     await lender.save()
 
@@ -40,7 +41,7 @@ class LenderRepository {
     lender.phone_number = lenderDetails.phone_number
     lender.email = lenderDetails.email
     lender.address = lenderDetails.address
-    lender.bank_account_number = lenderDetails.bank_account_number
+    lender.bank_account_number = this.encryption.encrypt(lenderDetails.bank_account_number)
 
     await lender.save()
 

@@ -22,10 +22,10 @@ class RepositoryProvider extends ServiceProvider {
       return new UserRepository(use('App/Models/User'))
     }),
     this.app.bind('App/Repositories/SchoolRepository', () => {
-      return new SchoolRepository(use('App/Models/School'))
+      return new SchoolRepository(use('App/Models/School'), use('Encryption'))
     }),
     this.app.bind('App/Repositories/LenderRepository', () => {
-      return new LenderRepository(use('App/Models/Lender'))
+      return new LenderRepository(use('App/Models/Lender'), use('Encryption'))
     }),
     this.app.bind('App/Repositories/StudentRepository', () => {
       return new StudentRepository(use('App/Models/Student'))
