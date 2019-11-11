@@ -18,7 +18,8 @@ class AddValidator {
       name: 'required',
       phone_number: 'required',
       email: 'required',
-      address: 'required'
+      address: 'required',
+      bank_account_number: 'required'
     }
   }
 
@@ -28,7 +29,8 @@ class AddValidator {
       'name.required': 'Name is required.',
       'phone_number.required': 'Phone number is required.',
       'email.required': 'Email is required.',
-      'address.required': 'Address type is required.'
+      'address.required': 'Address type is required.',
+      'bank_account_number.required': 'Bank account number is required.'
     }
   }
 
