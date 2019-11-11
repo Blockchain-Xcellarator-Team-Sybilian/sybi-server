@@ -40,6 +40,7 @@ class SchoolRepository {
     school.phone_number = schoolDetails.phone_number
     school.email = schoolDetails.email
     school.address = schoolDetails.address
+    school.bank_account_number = schoolDetails.bank_account_number
 
     await school.save()
 

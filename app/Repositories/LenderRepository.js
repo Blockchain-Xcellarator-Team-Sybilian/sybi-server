@@ -40,6 +40,7 @@ class LenderRepository {
     lender.phone_number = lenderDetails.phone_number
     lender.email = lenderDetails.email
     lender.address = lenderDetails.address
+    school.bank_account_number = schoolDetails.bank_account_number
 
     await lender.save()
 
