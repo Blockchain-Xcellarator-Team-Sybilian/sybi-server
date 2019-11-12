@@ -1,5 +1,6 @@
 'use strict'
 
+const Encryption = use('Encryption')
 const BumblebeeTransformer = use('Bumblebee/Transformer')
 
 /**
@@ -20,6 +21,7 @@ class SchoolTransformer extends BumblebeeTransformer {
       phone_number: model.phone_number,
       email: model.email,
       address: model.address,
+      bank_account_number: Encryption.decrypt(model.bank_account_number),
       created_at: model.created_at,
       updated_at: model.updated_at
     }

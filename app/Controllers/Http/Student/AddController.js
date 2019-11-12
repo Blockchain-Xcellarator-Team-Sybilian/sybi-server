@@ -12,7 +12,7 @@ class AddController {
       'date_of_birth', 'place_of_birth', 'present_address', 'permanent_address'])
     
     // Process
-    let student = await transform.include('school,guarantor').item(StudentRepository.add(studentDetails), 'StudentTransformer')
+    let student = await transform.item(StudentRepository.add(studentDetails), 'StudentTransformer')
 
     // Set response body
     const responseStatus = Config.get('response.status.success')

@@ -61,19 +61,25 @@ module.exports = {
       loan: {
         browse: 'BROWSE_LOANS',
         read: 'READ_LOAN',
-        edit: 'EDIT_LOAN',
-        add: 'ADD_LOAN',
-        delete: 'DELETE_LOAN'
+        apply: 'APPLY_LOAN',
+        endorse: 'ENDORSE_LOAN',
+        approve: 'APPROVE_LOAN',
+        accept: 'ACCEPT_LOAN',
+        release: 'RELEASE_LOAN',
+        receive: 'RECEIVE_LOAN',
+        pay: 'PAY_LOAN',
+        cancel: 'CANCEL_LOAN',
+        deny: 'DENY_LOAN',
       },
       document: {
         browse: 'BROWSE_DOCUMENTS',
         read: 'READ_DOCUMENT',
-        edit: 'EDIT_DOCUMENT',
-        add: 'ADD_DOCUMENT',
-        delete: 'DELETE_DOCUMENT'
+        add: 'ADD_DOCUMENT'
       }
     },
     error: {
+      loan_limit: 'LOAN_LIMIT',
+      document_exists: 'DOCUMENT_EXISTS',
       bad_request: 'BAD_REQUEST',
       unauthorized: 'UNAUTHORIZED',
       invalid_token: 'INVALID_TOKEN',

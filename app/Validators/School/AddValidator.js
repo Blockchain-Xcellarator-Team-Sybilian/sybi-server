@@ -3,7 +3,7 @@
 const { formatters } = use('Validator')
 const ValidationException = use('App/Exceptions/ValidationException')
 
-class LenderValidator {
+class AddValidator {
   get validateAll () {
     return true
   }
@@ -14,22 +14,23 @@ class LenderValidator {
 
   get rules () {
     return {
+      user_id: 'required',
       name: 'required',
       phone_number: 'required',
       email: 'required',
-      bank_account_number: 'required|unique:lenders',
-      address: 'required'
+      address: 'required',
+      bank_account_number: 'required'
     }
   }
 
   get messages () {
     return {
-      'name.unique': 'Name is required.',
+      'user_id.required': 'User is required.',
+      'name.required': 'Name is required.',
       'phone_number.required': 'Phone number is required.',
       'email.required': 'Email is required.',
-      'bank_account_number.required': 'Bank account number is required.',
-      'bank_account_number.unique': 'Bank account number already taken.',
-      'address.required': 'Address type is required.'
+      'address.required': 'Address type is required.',
+      'bank_account_number.required': 'Bank account number is required.'
     }
   }
 
@@ -38,4 +39,4 @@ class LenderValidator {
   }
 }
 
-module.exports = LenderValidator
+module.exports = AddValidator

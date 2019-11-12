@@ -2,6 +2,8 @@
 
 const { ServiceProvider } = require('@adonisjs/fold')
 const ResponseHelper = require('../app/Helpers/ResponseHelper')
+const GeneratorHelper = require('../app/Helpers/GeneratorHelper')
+const DocumentHelper = require('../app/Helpers/DocumentHelper')
 
 class HelperProvider extends ServiceProvider {
   /**
@@ -14,6 +16,12 @@ class HelperProvider extends ServiceProvider {
   register () {
     this.app.bind('App/Helpers/ResponseHelper', () => {
       return new ResponseHelper()
+    }),
+    this.app.bind('App/Helpers/GeneratorHelper', () => {
+      return new GeneratorHelper()
+    }),
+    this.app.bind('App/Helpers/DocumentHelper', () => {
+      return new DocumentHelper(use('GeneratorHelper'))
     })
   }
 

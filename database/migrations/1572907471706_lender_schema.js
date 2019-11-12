@@ -10,8 +10,9 @@ class LenderSchema extends Schema {
       table.integer('user_id').unsigned().references('id').inTable('users')
       table.string('name', 80).notNullable()
       table.integer('phone_number').notNullable()
-      table.string('email', 80).notNullable()
+      table.string('email', 80).nullable()
       table.string('address', 80).notNullable()
+      table.string('bank_account_number', 80).notNullable()
       table.timestamps()
     })
   }

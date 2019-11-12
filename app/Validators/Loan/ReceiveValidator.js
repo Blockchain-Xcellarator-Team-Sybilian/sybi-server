@@ -3,7 +3,7 @@
 const { formatters } = use('Validator')
 const ValidationException = use('App/Exceptions/ValidationException')
 
-class RequestTokenValidator {
+class ReceiveValidator {
   get validateAll () {
     return true
   }
@@ -14,15 +14,13 @@ class RequestTokenValidator {
 
   get rules () {
     return {
-      username: 'required',
-      password: 'required',
+      loan_id: 'required'
     }
   }
 
   get messages () {
     return {
-      'username.required': 'Username is required.',
-      'password.required': 'Password is required.'
+      'loan_id.required': 'Loan is required.'
     }
   }
 
@@ -31,4 +29,4 @@ class RequestTokenValidator {
   }
 }
 
-module.exports = RequestTokenValidator
+module.exports = ReceiveValidator

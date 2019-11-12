@@ -9,7 +9,7 @@ const BumblebeeTransformer = use('Bumblebee/Transformer')
  * @constructor
  */
 class StudentTransformer extends BumblebeeTransformer {
-  static get availableInclude () {
+  static get defaultInclude () {
     return [
       'school',
       'guarantor'

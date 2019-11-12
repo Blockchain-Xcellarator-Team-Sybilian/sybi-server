@@ -3,7 +3,7 @@
 const { formatters } = use('Validator')
 const ValidationException = use('App/Exceptions/ValidationException')
 
-class UserValidator {
+class ApplyValidator {
   get validateAll () {
     return true
   }
@@ -14,16 +14,17 @@ class UserValidator {
 
   get rules () {
     return {
-      username: 'required|unique:users',
-      password: 'required'
+      student_id: 'required',
+      description: 'required',
+      amount: 'required'
     }
   }
 
   get messages () {
     return {
-      'username.required': 'Username is required.',
-      'username.unique': 'Username already taken.',
-      'password.required': 'Password is required.'
+      'student_id.required': 'Student is required.',
+      'description.required': 'Description is required.',
+      'amount.required': 'Amount is required.'
     }
   }
 
@@ -32,4 +33,4 @@ class UserValidator {
   }
 }
 
-module.exports = UserValidator
+module.exports = ApplyValidator

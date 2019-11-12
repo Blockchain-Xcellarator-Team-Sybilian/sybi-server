@@ -20,6 +20,7 @@ const providers = [
   '@adonisjs/cors/providers/CorsProvider',
   '@adonisjs/lucid/providers/LucidProvider',
   '@adonisjs/validator/providers/ValidatorProvider',
+  '@adonisjs/drive/providers/DriveProvider',
   'adonis-bumblebee/providers/BumblebeeProvider',
   // Custom providers
   path.join(__dirname, '..', 'providers', 'RepositoryProvider'),
@@ -58,7 +59,11 @@ const aliases = {
   LenderRepository: 'App/Repositories/LenderRepository',
   StudentRepository: 'App/Repositories/StudentRepository',
   GuarantorRepository: 'App/Repositories/GuarantorRepository',
-  ResponseHelper: 'App/Helpers/ResponseHelper'
+  LoanRepository: 'App/Repositories/LoanRepository',
+  DocumentRepository: 'App/Repositories/DocumentRepository',
+  ResponseHelper: 'App/Helpers/ResponseHelper',
+  GeneratorHelper: 'App/Helpers/GeneratorHelper',
+  DocumentHelper: 'App/Helpers/DocumentHelper'
 }
 
 /*

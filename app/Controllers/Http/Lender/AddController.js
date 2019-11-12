@@ -7,7 +7,7 @@ const LenderRepository = use('LenderRepository')
 class AddController {
   async add ({ request, response, transform }) {
     // Get request body
-    const lenderDetails = request.only(['user_id', 'name', 'phone_number', 'email', 'address'])
+    const lenderDetails = request.only(['user_id', 'name', 'phone_number', 'email', 'address', 'bank_account_number'])
     
     // Process
     let lender = await transform.item(LenderRepository.add(lenderDetails), 'LenderTransformer')

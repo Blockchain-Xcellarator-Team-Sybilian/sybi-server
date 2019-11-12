@@ -7,11 +7,12 @@ class DocumentSchema extends Schema {
   up () {
     this.create('documents', (table) => {
       table.increments()
-      table.integer('user_id').unsigned().references('id').inTable('users')
+      table.integer('loan_id').unsigned().references('id').inTable('loans')
       table.string('name', 80).notNullable()
+      table.string('type', 80).notNullable()
       table.string('comment', 80).nullable()
       table.string('path', 80).notNullable()
-      table.string('hash', 60).notNullable()
+      table.string('checksum', 80).notNullable()
       table.timestamps()
     })
   }

@@ -2,8 +2,9 @@
 
 class SchoolRepository {
 
-  constructor (school) {
+  constructor (school, encryption) {
     this.school = school
+    this.encryption = encryption
   }
 
   async browse () {
@@ -25,6 +26,7 @@ class SchoolRepository {
     school.phone_number = schoolDetails.phone_number
     school.email = schoolDetails.email
     school.address = schoolDetails.address
+    school.bank_account_number = this.encryption.encrypt(schoolDetails.bank_account_number)
 
     await school.save()
 
@@ -39,6 +41,7 @@ class SchoolRepository {
     school.phone_number = schoolDetails.phone_number
     school.email = schoolDetails.email
     school.address = schoolDetails.address
+    school.bank_account_number = this.encryption.encrypt(schoolDetails.bank_account_number)
 
     await school.save()
 

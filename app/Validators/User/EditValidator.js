@@ -3,7 +3,7 @@
 const { formatters } = use('Validator')
 const ValidationException = use('App/Exceptions/ValidationException')
 
-class RefreshTokenValidator {
+class EditValidator {
   get validateAll () {
     return true
   }
@@ -14,13 +14,16 @@ class RefreshTokenValidator {
 
   get rules () {
     return {
-      refresh_token: 'required'
+      username: 'required|unique:users',
+      password: 'required'
     }
   }
 
   get messages () {
     return {
-      'refresh_token.required': 'Refresh token is required.'
+      'username.required': 'Username is required.',
+      'username.unique': 'Username already taken.',
+      'password.required': 'Password is required.'
     }
   }
 
@@ -29,4 +32,4 @@ class RefreshTokenValidator {
   }
 }
 
-module.exports = RefreshTokenValidator
+module.exports = EditValidator

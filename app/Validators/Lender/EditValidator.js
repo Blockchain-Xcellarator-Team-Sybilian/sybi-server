@@ -3,7 +3,7 @@
 const { formatters } = use('Validator')
 const ValidationException = use('App/Exceptions/ValidationException')
 
-class SchoolValidator {
+class EditValidator {
   get validateAll () {
     return true
   }
@@ -17,19 +17,18 @@ class SchoolValidator {
       name: 'required',
       phone_number: 'required',
       email: 'required',
-      bank_account_number: 'required|unique:schools',
-      address: 'required'
+      address: 'required',
+      bank_account_number: 'required'
     }
   }
 
   get messages () {
     return {
-      'name.unique': 'Name is required.',
+      'name.required': 'Name is required.',
       'phone_number.required': 'Phone number is required.',
       'email.required': 'Email is required.',
-      'bank_account_number.required': 'Bank account number is required.',
-      'bank_account_number.unique': 'Bank account number already taken.',
-      'address.required': 'Address type is required.'
+      'address.required': 'Address type is required.',
+      'bank_account_number.required': 'Bank account number is required.'
     }
   }
 
@@ -38,4 +37,4 @@ class SchoolValidator {
   }
 }
 
-module.exports = SchoolValidator
+module.exports = EditValidator

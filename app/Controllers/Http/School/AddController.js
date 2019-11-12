@@ -7,7 +7,7 @@ const SchoolRepository = use('SchoolRepository')
 class AddController {
   async add ({ request, response, transform }) {
     // Get request body
-    const schoolDetails = request.only(['user_id', 'name', 'phone_number', 'email', 'address'])
+    const schoolDetails = request.only(['user_id', 'name', 'phone_number', 'email', 'address', 'bank_account_number'])
     
     // Process
     let school = await transform.item(SchoolRepository.add(schoolDetails), 'SchoolTransformer')
