@@ -30,7 +30,7 @@ class DocumentHelper {
     document
       .text(`NOTICE OF APPROVAL`)
       .moveDown()
-      .text(`Loan ${documentContent.loan_code} has been posted by ${documentContent.lender_name} to ${documentContent.school_name} for ${documentContent.student_name}. Please proceed to your school's registrar to procure a copy of your receipt. Thanks for being an Educado!`)
+      .text(`Loan ${documentContent.loan_code} has been approved by ${documentContent.lender_name} to ${documentContent.school_name} for ${documentContent.student_name}.`)
 
     document.end()
     document.pipe(fs.createWriteStream(documentPath))
@@ -52,6 +52,18 @@ class DocumentHelper {
       .moveDown()
       .text(`For value received, I hereby certify that the information above and all information I provided during the application for this loan request is certified true, complete, and correct.`)
       .text(`I acknowledge that the amount mentioned above will be due and payable at the above date. In the event of default in payment, I acknowledge that the whole amount will become due and payable without notice and demandable immediately.`)
+
+    document.end()
+    document.pipe(fs.createWriteStream(documentPath))
+  }
+
+  async generateNoticeOfRelease (documentPath, documentContent) {
+    let document = new PDFDocument({ size: 'A4', margin: 50 });
+    
+    document
+      .text(`NOTICE OF RELEASE`)
+      .moveDown()
+      .text(`An amount of ${documentContent.amount} has been released by ${documentContent.lender_name} to ${documentContent.school_name}.`)
 
     document.end()
     document.pipe(fs.createWriteStream(documentPath))
