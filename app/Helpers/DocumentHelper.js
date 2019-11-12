@@ -50,7 +50,7 @@ class DocumentHelper {
       .text(`Interest: ${documentContent.interest}`)
       .text(`Due Date: ${documentContent.due_date}`)
       .moveDown()
-      .text(`FOR VALUE RECEIVED, I hereby certify that the information above and all information I provided during the application for this loan request is certified true, complete, and correct.`)
+      .text(`For value received, I hereby certify that the information above and all information I provided during the application for this loan request is certified true, complete, and correct.`)
       .text(`I acknowledge that the amount mentioned above will be due and payable at the above date. In the event of default in payment, I acknowledge that the whole amount will become due and payable without notice and demandable immediately.`)
 
     document.end()
