@@ -29,6 +29,7 @@ class LoanTransformer extends BumblebeeTransformer {
       status: model.status,
       amount: model.amount,
       due_amount: model.due_amount,
+      interest: model.interest,
       applied_at: model.applied_at,
       endorsed_at: model.endorsed_at,
       approved_at: model.approved_at,

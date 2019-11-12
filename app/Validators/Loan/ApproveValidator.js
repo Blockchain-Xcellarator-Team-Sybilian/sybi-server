@@ -17,6 +17,7 @@ class ApproveValidator {
       loan_id: 'required',
       lender_id: 'required',
       due_amount: 'required',
+      interest: 'required',
       due_at: 'required'
     }
   }
@@ -26,6 +27,7 @@ class ApproveValidator {
       'loan_id.required': 'Loan is required.',
       'lender_id.required': 'Lender is required.',
       'due_amount.required': 'Due amount is required.',
+      'interest.required': 'Interest is required.',
       'due_at.required': 'Due date is required.'
     }
   }

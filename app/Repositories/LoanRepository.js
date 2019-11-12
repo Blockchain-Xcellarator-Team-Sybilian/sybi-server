@@ -51,6 +51,7 @@ class LoanRepository {
     loan.lender_id = loanDetails.lender_id
     loan.due_amount = loanDetails.due_amount
     loan.due_at = loanDetails.due_at
+    loan.interest = loanDetails.interest
     loan.approved_at = new Date().toISOString()
     loan.status = 'APPROVED'
 

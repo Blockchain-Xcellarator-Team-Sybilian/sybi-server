@@ -14,6 +14,7 @@ class LoanSchema extends Schema {
       table.string('status', 80).notNullable()
       table.integer('amount').notNullable()
       table.integer('due_amount').nullable()
+      table.interest('interest').nullable()
       table.datetime('applied_at').nullable()
       table.datetime('endorsed_at').nullable()
       table.datetime('approved_at').nullable()
