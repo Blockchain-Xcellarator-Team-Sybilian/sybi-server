@@ -54,7 +54,7 @@ class LoanTransformer extends BumblebeeTransformer {
   }
 
   includeDocuments (model) {
-    return this.item(model.getRelated('documents'), 'DocumentTransformer')
+    return this.collection(model.getRelated('documents'), 'DocumentTransformer')
   }
 }
 
