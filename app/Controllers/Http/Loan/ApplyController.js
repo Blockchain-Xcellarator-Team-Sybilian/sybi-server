@@ -7,7 +7,9 @@ const LoanRepository = use('LoanRepository')
 const ResponseHelper = use('ResponseHelper')
 const DocumentHelper = use('DocumentHelper')
 const GeneratorHelper = use('GeneratorHelper')
+const DocumentRepository = use('DocumentRepository')
 const LoanLimitException = use('App/Exceptions/LoanLimitException')
+const DocumentExistsException = use('App/Exceptions/DocumentExistsException')
 
 class ApplyController {
   async apply ({ request, response, transform }) {
@@ -20,7 +22,7 @@ class ApplyController {
     if (existingLoanCount >= Config.get('loan.limit_count')) {
       throw new LoanLimitException
     }
-    
+
     // Process
     let loan = await transform.item(LoanRepository.apply(loanDetails), 'LoanTransformer')
 
@@ -39,7 +41,28 @@ class ApplyController {
     }
     await DocumentHelper.generateLoanApplicationForm(documentPath, documentContent)
 
-    // Hash document
+    // Generate document checksum
+    const documentChecksum = await GeneratorHelper.sha256(documentPath)
+
+    // Check if document already exists
+    const existingDocumentCount = await DocumentRepository.checkExistingDocumentCount(documentChecksum)
+    
+    if (existingDocumentCount > 0) {
+      throw new DocumentExistsException
+    }
+
+    // Update document details
+    const documentDetails = {
+      loan_id: loan.id,
+      name: documentName,
+      type: 'PDF',
+      comment: 'Loan Application Form',
+      path: documentPath,
+      checksum: documentChecksum
+    }
+
+    // Save document details
+    await DocumentRepository.add(documentDetails)
 
     // Set response body
     const responseStatus = Config.get('response.status.success')

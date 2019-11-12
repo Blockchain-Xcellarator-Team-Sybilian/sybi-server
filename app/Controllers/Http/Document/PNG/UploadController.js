@@ -22,6 +22,7 @@ class UploadController {
     const loanCode = loan.code
     const documentDirectory = Helpers.tmpPath('loans/') + loanCode + '/PNG/'
     const documentName = await GeneratorHelper.code(6) + '.png'
+    const documentPath = documentDirectory + documentName
 
     // Move document to folder
     await documentFile.move(documentDirectory, {
@@ -30,12 +31,12 @@ class UploadController {
     })
 
     // Generate document checksum
-    const documentChecksum = await GeneratorHelper.sha256(documentDirectory + documentName)
+    const documentChecksum = await GeneratorHelper.sha256(documentPath)
 
     // Update document details
     documentDetails.name = documentName
     documentDetails.type = 'PNG'
-    documentDetails.path = documentDirectory
+    documentDetails.path = documentPath
     documentDetails.checksum = documentChecksum
 
     // Check if document already exists
