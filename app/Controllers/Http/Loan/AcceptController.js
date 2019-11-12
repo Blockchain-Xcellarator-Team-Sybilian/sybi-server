@@ -30,7 +30,7 @@ class AcceptController {
       amount: loan.amount,
       due_amount: loan.due_amount,
       interest: loan.interest,
-      due_date: loan.due_date
+      due_date: loan.due_at
     }
     await DocumentHelper.generatePromissoryNote(documentPath, documentContent)
 
