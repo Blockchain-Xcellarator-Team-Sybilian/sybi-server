@@ -14,7 +14,7 @@ Server application of Educado. Made with ❤️ for UnionBank Blockchain Xceller
 Clone the repository.
 
 ```bash
-git clone https://github.com/xcellerator-sybilian/educado-server.git && cd educado-server
+git clone https://github.com/xcellerator-sybilian/educado-api-server.git && cd educado-api-server
 ```
 
 Install dependencies.
@@ -47,11 +47,11 @@ Pull Adonis Docker image.
 docker pull stephenafamo/adonisjs:1.0.0
 ```
 
-Create Adonis Docker container. Mount `$HOME/Projects/Educado/educado-server` on the host machine to the container side path `/var/www`. Update this path to your own project path.
+Create Adonis Docker container. Mount `$HOME/Projects/Educado/educado-api-server` on the host machine to the container side path `/var/www`. Update this path to your own project path.
 
 
 ```bash
-docker run --restart=always --net educado-network --ip 172.18.0.4 --name educado-api-server -d -p 3333:3333 -v $HOME/Projects/Educado/educado-server:/var/www stephenafamo/adonisjs:1.0.0
+docker run --restart=always --net educado-network --ip 172.18.0.4 --name educado-api-server -d -p 3333:3333 -v $HOME/Projects/Educado/educado-api-server:/var/www stephenafamo/adonisjs:1.0.0
 ```
 
 Generate .env file.
@@ -88,8 +88,8 @@ Run migrations.
 adonis migration:run
 ```
 
-Run tests.
+Run seeds.
 
 ```bash
-adonis test
+adonis seed
 ```

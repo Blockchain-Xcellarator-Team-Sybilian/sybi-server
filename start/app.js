@@ -1,5 +1,7 @@
 'use strict'
 
+const path = require('path')
+
 /*
 |--------------------------------------------------------------------------
 | Providers
@@ -11,11 +13,18 @@
 |
 */
 const providers = [
+  // Adonis providers
   '@adonisjs/framework/providers/AppProvider',
   '@adonisjs/auth/providers/AuthProvider',
   '@adonisjs/bodyparser/providers/BodyParserProvider',
   '@adonisjs/cors/providers/CorsProvider',
-  '@adonisjs/lucid/providers/LucidProvider'
+  '@adonisjs/lucid/providers/LucidProvider',
+  '@adonisjs/validator/providers/ValidatorProvider',
+  '@adonisjs/drive/providers/DriveProvider',
+  'adonis-bumblebee/providers/BumblebeeProvider',
+  // Custom providers
+  path.join(__dirname, '..', 'providers', 'RepositoryProvider'),
+  path.join(__dirname, '..', 'providers', 'HelperProvider')
 ]
 
 /*
@@ -29,7 +38,7 @@ const providers = [
 */
 const aceProviders = [
   '@adonisjs/lucid/providers/MigrationsProvider',
-  '@adonisjs/vow/providers/VowProvider'
+  'adonis-bumblebee/providers/CommandsProvider'
 ]
 
 /*
@@ -44,7 +53,18 @@ const aceProviders = [
 |   { Route: 'Adonis/Src/Route' }
 |
 */
-const aliases = {}
+const aliases = {
+  UserRepository: 'App/Repositories/UserRepository',
+  SchoolRepository: 'App/Repositories/SchoolRepository',
+  LenderRepository: 'App/Repositories/LenderRepository',
+  StudentRepository: 'App/Repositories/StudentRepository',
+  GuarantorRepository: 'App/Repositories/GuarantorRepository',
+  LoanRepository: 'App/Repositories/LoanRepository',
+  DocumentRepository: 'App/Repositories/DocumentRepository',
+  ResponseHelper: 'App/Helpers/ResponseHelper',
+  GeneratorHelper: 'App/Helpers/GeneratorHelper',
+  DocumentHelper: 'App/Helpers/DocumentHelper'
+}
 
 /*
 |--------------------------------------------------------------------------
