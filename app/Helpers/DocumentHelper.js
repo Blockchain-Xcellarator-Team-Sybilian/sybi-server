@@ -35,6 +35,27 @@ class DocumentHelper {
     document.end()
     document.pipe(fs.createWriteStream(documentPath))
   }
+
+  async generatePromissoryNote (documentPath, documentContent) {
+    let document = new PDFDocument({ size: 'A4', margin: 50 });
+    
+    document
+      .text(`PROMISSORY NOTE`)
+      .moveDown()
+      .text(`Loan: ${documentContent.loan_code}`)
+      .text(`Student: ${documentContent.student_name}`)
+      .text(`Lender: ${documentContent.lender_name}`)
+      .text(`Principal Amount: ${documentContent.amount}`)
+      .text(`Due Amount: ${documentContent.due_amount}`)
+      .text(`Interest: ${documentContent.interest}`)
+      .text(`Due Date: ${documentContent.due_date}`)
+      .moveDown()
+      .text(`FOR VALUE RECEIVED, I hereby certify that the information above and all information I provided during the application for this loan request is certified true, complete, and correct.`)
+      .text(`I acknowledge that the amount mentioned above will be due and payable at the above date. In the event of default in payment, I acknowledge that the whole amount will become due and payable without notice and demandable immediately.`)
+
+    document.end()
+    document.pipe(fs.createWriteStream(documentPath))
+  }
 }
   
 module.exports = DocumentHelper
