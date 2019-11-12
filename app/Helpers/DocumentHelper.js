@@ -92,6 +92,18 @@ class DocumentHelper {
     document.end()
     document.pipe(fs.createWriteStream(documentPath))
   }
+
+  async generateNoticeOfCancellation (documentPath, documentContent) {
+    let document = new PDFDocument({ size: 'A4', margin: 50 });
+    
+    document
+      .text(`NOTICE OF CANCELLATION`)
+      .moveDown()
+      .text(`Loan ${documentContent.code} has been cancelled.`)
+
+    document.end()
+    document.pipe(fs.createWriteStream(documentPath))
+  }
 }
   
 module.exports = DocumentHelper
