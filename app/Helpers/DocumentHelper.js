@@ -68,6 +68,18 @@ class DocumentHelper {
     document.end()
     document.pipe(fs.createWriteStream(documentPath))
   }
+
+  async generateNoticeOfRelease (documentPath, documentContent) {
+    let document = new PDFDocument({ size: 'A4', margin: 50 });
+    
+    document
+      .text(`NOTICE OF RECEIPT`)
+      .moveDown()
+      .text(`An amount of ${documentContent.amount} has been received by ${documentContent.school_name} from ${documentContent.lender_name}.`)
+
+    document.end()
+    document.pipe(fs.createWriteStream(documentPath))
+  }
 }
   
 module.exports = DocumentHelper
