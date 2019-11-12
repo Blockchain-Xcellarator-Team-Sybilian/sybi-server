@@ -28,7 +28,7 @@ class ReceiveController {
       school_name: loan.student.school.name,
       amount: loan.amount
     }
-    await DocumentHelper.generateNoticeOfRelease(documentPath, documentContent)
+    await DocumentHelper.generateNoticeOfReceipt(documentPath, documentContent)
 
     // Generate document checksum
     const documentChecksum = await GeneratorHelper.sha256(documentPath)

@@ -69,13 +69,25 @@ class DocumentHelper {
     document.pipe(fs.createWriteStream(documentPath))
   }
 
-  async generateNoticeOfRelease (documentPath, documentContent) {
+  async generateNoticeOfReceipt (documentPath, documentContent) {
     let document = new PDFDocument({ size: 'A4', margin: 50 });
     
     document
       .text(`NOTICE OF RECEIPT`)
       .moveDown()
       .text(`An amount of ${documentContent.amount} has been received by ${documentContent.school_name} from ${documentContent.lender_name}.`)
+
+    document.end()
+    document.pipe(fs.createWriteStream(documentPath))
+  }
+
+  async generateNoticeOfPayment (documentPath, documentContent) {
+    let document = new PDFDocument({ size: 'A4', margin: 50 });
+    
+    document
+      .text(`NOTICE OF PAYMENT`)
+      .moveDown()
+      .text(`An amount of ${documentContent.amount} has been paid by ${documentContent.student_name} to ${documentContent.lender_name} for loan ${documentContent.code}.`)
 
     document.end()
     document.pipe(fs.createWriteStream(documentPath))
