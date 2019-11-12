@@ -9,7 +9,6 @@ const DocumentHelper = use('DocumentHelper')
 const GeneratorHelper = use('GeneratorHelper')
 const DocumentRepository = use('DocumentRepository')
 const LoanLimitException = use('App/Exceptions/LoanLimitException')
-const DocumentExistsException = use('App/Exceptions/DocumentExistsException')
 
 class ApplyController {
   async apply ({ request, response, transform }) {
@@ -44,19 +43,12 @@ class ApplyController {
     // Generate document checksum
     const documentChecksum = await GeneratorHelper.sha256(documentPath)
 
-    // Check if document already exists
-    const existingDocumentCount = await DocumentRepository.checkExistingDocumentCount(documentChecksum)
-    
-    if (existingDocumentCount > 0) {
-      throw new DocumentExistsException
-    }
-
-    // Update document details
+    // Generate document details
     const documentDetails = {
       loan_id: loan.id,
       name: documentName,
       type: 'PDF',
-      comment: 'Loan Application Form',
+      comment: 'Loan application form',
       path: documentPath,
       checksum: documentChecksum
     }
