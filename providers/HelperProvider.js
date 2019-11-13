@@ -25,7 +25,7 @@ class HelperProvider extends ServiceProvider {
       return new DocumentHelper(use('GeneratorHelper'))
     }),
     this.app.bind('App/Helpers/Web3Helper', () => {
-      return new Web3Helper()
+      return new Web3Helper(use('Config'))
     })
   }
 
