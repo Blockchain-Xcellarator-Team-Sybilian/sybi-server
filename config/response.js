@@ -73,6 +73,7 @@ module.exports = {
       },
       document: {
         browse: 'BROWSE_DOCUMENTS',
+        verify: 'VERIFY_DOCUMENT',
         read: 'READ_DOCUMENT',
         add: 'ADD_DOCUMENT'
       }
