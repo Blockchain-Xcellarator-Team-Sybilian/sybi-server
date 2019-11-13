@@ -28,7 +28,7 @@ class VerifyController {
     const documentChecksum = await GeneratorHelper.sha256(documentPath)
     let match = false
 
-    // Process
+    // Process (for improvement)
     try {
       const documentFromBlockchain = await Web3.getDocument(documentChecksum)
       const blockchainChecksum = documentFromBlockchain[0]

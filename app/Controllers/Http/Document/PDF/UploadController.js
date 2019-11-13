@@ -2,6 +2,7 @@
 
 const Config = use('Config')
 const Helpers = use('Helpers')
+const Web3 = use('Web3Helper')
 const ResponseHelper = use('ResponseHelper')
 const LoanRepository = use('LoanRepository')
 const GeneratorHelper = use('GeneratorHelper')
@@ -48,6 +49,9 @@ class UploadController {
 
     // Save document details
     let document = await transform.item(DocumentRepository.add(documentDetails), 'DocumentTransformer')
+
+    // Add document to blockchain
+    // await Web3.setDocument(documentChecksum, documentDetails.name, documentDetails.comment)
 
     // Set response body
     const responseStatus = Config.get('response.status.success')
