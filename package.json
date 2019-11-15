@@ -31,8 +31,7 @@
     "pdfkit": "^0.10.0",
     "pg": "^7.12.1",
     "sha256-file": "^1.0.0",
-    "sqlite3": "^4.1.0",
-    "web3": "^1.2.2"
+    "sqlite3": "^4.1.0"
   },
   "devDependencies": {},
   "autoload": {
