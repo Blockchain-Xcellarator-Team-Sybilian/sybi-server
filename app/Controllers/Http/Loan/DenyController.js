@@ -3,6 +3,7 @@
 const Drive = use('Drive')
 const Config = use('Config')
 const Helpers = use('Helpers')
+const KaleidoHelper = use('KaleidoHelper')
 const LoanRepository = use('LoanRepository')
 const ResponseHelper = use('ResponseHelper')
 const DocumentHelper = use('DocumentHelper')
@@ -43,6 +44,9 @@ class DenyController {
 
     // Save document details
     await DocumentRepository.add(documentDetails)
+
+    // Add document to blockchain
+    await KaleidoHelper.setDocument(documentDetails.checksum, documentDetails.name, documentDetails.comment)
 
     // Set response body
     const responseStatus = Config.get('response.status.success')
