@@ -10,6 +10,7 @@ class KaleidoHelper {
   async getDocument (checksum) {
     const credential = this.config.get('kaleido.credential')
     const key = this.config.get('kaleido.key')
+    const gasPrice = this.config.get('kaleido.contracts.document.gas_price')
     const contractAddress = this.config.get('kaleido.contracts.document.address')
     const baseUrl = this.config.get('kaleido.url')
     const contractUrl = this.config.get('kaleido.contracts.document.url') + '/' + contractAddress + '/getDocument'
@@ -19,7 +20,7 @@ class KaleidoHelper {
       url: requestUrl,
       params: {
         '_checksum': checksum,
-        'kld-gasprice': 0
+        'kld-gasprice': gasPrice
       },
       auth: {
         username: credential,
@@ -36,7 +37,46 @@ class KaleidoHelper {
     })
   }
 
-  async setDocument (checksum, name, comment) {}
+  async setDocument (checksum, name, comment) {
+    const credential = this.config.get('kaleido.credential')
+    const key = this.config.get('kaleido.key')
+    const gasPrice = this.config.get('kaleido.contracts.document.gas_price')
+    const observerAddress = this.config.get('kaleido.accounts.observer.address')
+    const contractAddress = this.config.get('kaleido.contracts.document.address')
+    const baseUrl = this.config.get('kaleido.url')
+    const contractUrl = this.config.get('kaleido.contracts.document.url') + '/' + contractAddress + '/setDocument'
+    const requestUrl = baseUrl + contractUrl
+
+    const config = {
+      method: 'post',
+      url: requestUrl,
+      params: {
+        'kld-from': observerAddress,
+        'kld-gasprice': gasPrice
+      },
+      auth: {
+        username: credential,
+        password: key
+      },
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: {
+        '_checksum': checksum,
+        '_comment': name,
+        '_name': comment,
+        '_timestamp': Date.now().toString()
+      }
+    }
+
+    return await Axios(config)
+    .then(function (success) {
+      return success.data
+    })
+    .catch(function (error) {
+      return error.response.data
+    })
+  }
 }
   
 module.exports = KaleidoHelper

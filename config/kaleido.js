@@ -6,6 +6,11 @@ module.exports = {
   credential: Env.get('KALEIDO_CREDENTIAL'),
   key: Env.get('KALEIDO_KEY'),
   url: Env.get('KALEIDO_URL'),
+  accounts: {
+    observer: {
+      address: '0x8631c1f737863943a26037a814d09eb4ec593613'
+    }
+  },
   contracts: {
     document: {
       url: '/gateways/document',
