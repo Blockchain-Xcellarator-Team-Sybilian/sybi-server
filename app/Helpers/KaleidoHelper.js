@@ -1,6 +1,8 @@
 'use strict'
 
+const fs =  require('fs')
 const Axios = require('axios')
+const AxiosFile = require('axios-file');
 
 class KaleidoHelper {
   constructor (config) {
@@ -70,6 +72,31 @@ class KaleidoHelper {
     }
 
     return await Axios(config)
+    .then(function (success) {
+      return success.data
+    })
+    .catch(function (error) {
+      return error.response.data
+    })
+  }
+
+  async uploadToIPFS (documentPath) {  
+    const credential = this.config.get('kaleido.credential')
+    const key = this.config.get('kaleido.key')
+    const requestUrl = 'https://' + credential +':' + key + '@a0ubjimmuh-a0jo9scvj3-ipfs.au0-aws.kaleido.io/api/v0/add'
+
+    const config = {
+      method: 'put',
+      url: requestUrl,
+      headers: {
+        'cache-control': 'no-cache'
+      },
+      data: {
+        path: fs.createReadStream(documentPath)
+      }
+    }
+
+    return await AxiosFile(config)
     .then(function (success) {
       return success.data
     })
