@@ -32,8 +32,8 @@ class PayController {
     }
     await DocumentHelper.generateNoticeOfPayment(documentPath, documentContent)
 
-    // Generate document checksum
-    const documentChecksum = await GeneratorHelper.sha256(documentPath)
+    // Upload to IPFS and get checksum
+    const ipfsDocument = await KaleidoHelper.uploadToIPFS(documentPath)
 
     // Generate document details
     const documentDetails = {
@@ -42,7 +42,7 @@ class PayController {
       type: 'PDF',
       comment: 'Notice of payment',
       path: documentPath,
-      checksum: documentChecksum
+      checksum: ipfsDocument.Hash
     }
 
     // Save document details

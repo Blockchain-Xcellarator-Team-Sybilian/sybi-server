@@ -29,8 +29,8 @@ class CancelController {
     }
     await DocumentHelper.generateNoticeOfCancellation(documentPath, documentContent)
 
-    // Generate document checksum
-    const documentChecksum = await GeneratorHelper.sha256(documentPath)
+    // Upload to IPFS and get checksum
+    const ipfsDocument = await KaleidoHelper.uploadToIPFS(documentPath)
 
     // Generate document details
     const documentDetails = {
@@ -39,7 +39,7 @@ class CancelController {
       type: 'PDF',
       comment: 'Notice of cancellation',
       path: documentPath,
-      checksum: documentChecksum
+      checksum: ipfsDocument.Hash
     }
 
     // Save document details

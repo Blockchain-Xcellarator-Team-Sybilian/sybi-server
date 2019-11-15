@@ -35,8 +35,8 @@ class AcceptController {
     }
     await DocumentHelper.generatePromissoryNote(documentPath, documentContent)
 
-    // Generate document checksum
-    const documentChecksum = await GeneratorHelper.sha256(documentPath)
+    // Upload to IPFS and get checksum
+    const ipfsDocument = await KaleidoHelper.uploadToIPFS(documentPath)
 
     // Generate document details
     const documentDetails = {
@@ -45,7 +45,7 @@ class AcceptController {
       type: 'PDF',
       comment: 'Promissory note',
       path: documentPath,
-      checksum: documentChecksum
+      checksum: ipfsDocument.Hash
     }
 
     // Save document details

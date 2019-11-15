@@ -31,8 +31,8 @@ class ReleaseController {
     }
     await DocumentHelper.generateNoticeOfRelease(documentPath, documentContent)
 
-    // Generate document checksum
-    const documentChecksum = await GeneratorHelper.sha256(documentPath)
+    // Upload to IPFS and get checksum
+    const ipfsDocument = await KaleidoHelper.uploadToIPFS(documentPath)
 
     // Generate document details
     const documentDetails = {
@@ -41,7 +41,7 @@ class ReleaseController {
       type: 'PDF',
       comment: 'Notice of release',
       path: documentPath,
-      checksum: documentChecksum
+      checksum: ipfsDocument.Hash
     }
 
     // Save document details
