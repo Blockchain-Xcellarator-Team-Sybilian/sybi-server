@@ -2,6 +2,7 @@
 
 const Config = use('Config')
 const Helpers = use('Helpers')
+const KaleidoHelper = use('KaleidoHelper')
 const ResponseHelper = use('ResponseHelper')
 const LoanRepository = use('LoanRepository')
 const GeneratorHelper = use('GeneratorHelper')
@@ -30,17 +31,17 @@ class UploadController {
       overwrite: true
     })
 
-    // Generate document checksum
-    const documentChecksum = await GeneratorHelper.sha256(documentPath)
+    // Upload to IPFS and get checksum
+    const ipfsDocument = await KaleidoHelper.uploadToIPFS(documentPath)
 
     // Update document details
     documentDetails.name = documentName
     documentDetails.type = 'PDF'
     documentDetails.path = documentPath
-    documentDetails.checksum = documentChecksum
+    documentDetails.checksum = ipfsDocument.Hash
 
     // Check if document already exists
-    const existingDocumentCount = await DocumentRepository.checkExistingDocumentCount(documentChecksum)
+    const existingDocumentCount = await DocumentRepository.checkExistingDocumentCount(documentDetails.checksum)
     
     if (existingDocumentCount > 0) {
       throw new DocumentExistsException
@@ -48,6 +49,9 @@ class UploadController {
 
     // Save document details
     let document = await transform.item(DocumentRepository.add(documentDetails), 'DocumentTransformer')
+
+    // Add document to blockchain
+    await KaleidoHelper.setDocument(documentDetails.checksum, documentDetails.name, documentDetails.comment)
 
     // Set response body
     const responseStatus = Config.get('response.status.success')

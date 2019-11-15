@@ -127,6 +127,8 @@ Route.group(() => {
 Route.group(() => {
   // Browse
   Route.get('/', 'BrowseController.browse')
+  // Verify document
+  Route.post('/verify', 'VerifyController.verify')
   // Upload PDF document
   Route.post('/pdf/upload', 'PDF/UploadController.upload')
   // Upload PNG document

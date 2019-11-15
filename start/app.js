@@ -63,7 +63,8 @@ const aliases = {
   DocumentRepository: 'App/Repositories/DocumentRepository',
   ResponseHelper: 'App/Helpers/ResponseHelper',
   GeneratorHelper: 'App/Helpers/GeneratorHelper',
-  DocumentHelper: 'App/Helpers/DocumentHelper'
+  DocumentHelper: 'App/Helpers/DocumentHelper',
+  KaleidoHelper: 'App/Helpers/KaleidoHelper'
 }
 
 /*

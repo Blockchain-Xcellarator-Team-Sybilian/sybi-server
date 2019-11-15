@@ -3,6 +3,7 @@
 const Drive = use('Drive')
 const Config = use('Config')
 const Helpers = use('Helpers')
+const KaleidoHelper = use('KaleidoHelper')
 const LoanRepository = use('LoanRepository')
 const ResponseHelper = use('ResponseHelper')
 const DocumentHelper = use('DocumentHelper')
@@ -34,8 +35,8 @@ class AcceptController {
     }
     await DocumentHelper.generatePromissoryNote(documentPath, documentContent)
 
-    // Generate document checksum
-    const documentChecksum = await GeneratorHelper.sha256(documentPath)
+    // Upload to IPFS and get checksum
+    const ipfsDocument = await KaleidoHelper.uploadToIPFS(documentPath)
 
     // Generate document details
     const documentDetails = {
@@ -44,11 +45,14 @@ class AcceptController {
       type: 'PDF',
       comment: 'Promissory note',
       path: documentPath,
-      checksum: documentChecksum
+      checksum: ipfsDocument.Hash
     }
 
     // Save document details
     await DocumentRepository.add(documentDetails)
+
+    // Add document to blockchain
+    await KaleidoHelper.setDocument(documentDetails.checksum, documentDetails.name, documentDetails.comment)
 
     // Set response body
     const responseStatus = Config.get('response.status.success')
