@@ -1,22 +1,39 @@
 'use strict'
 
+const Axios = require('axios')
+
 class KaleidoHelper {
   constructor (config) {
     this.config = config
 	}
 	
   async getDocument (checksum) {
-    const USER = this.config.get('web3.rpc_user')
-    const PASS = this.config.get('web3.rpc_pass')
-    const RPC_ENDPOINT = this.config.get('web3.rpc_endpoint')
-    const nodeUrl = 'https://' + USER + ':' + PASS + '@' + RPC_ENDPOINT
-    const provider = new Web3.providers.HttpProvider(nodeUrl)
-    const web3 = new Web3(provider)
-    
-    const DocumentContract = new web3.eth.Contract(contractAbi, contractAddress, {from: accountAddress})
-    const document = await DocumentContract.methods.getDocument(checksum).call()
+    const credential = this.config.get('kaleido.credential')
+    const key = this.config.get('kaleido.key')
+    const contractAddress = this.config.get('kaleido.contracts.document.address')
+    const baseUrl = this.config.get('kaleido.url')
+    const contractUrl = this.config.get('kaleido.contracts.document.url') + '/' + contractAddress + '/getDocument'
+    const requestUrl = baseUrl + contractUrl
+    const config = {
+      method: 'get',
+      url: requestUrl,
+      params: {
+        '_checksum': checksum,
+        'kld-gasprice': 0
+      },
+      auth: {
+        username: credential,
+        password: key
+      }
+    }
 
-    return document
+    return await Axios(config)
+    .then(function (success) {
+      return success.data['output']
+    })
+    .catch(function (error) {
+      return error.response.data.error
+    })
   }
 
   async setDocument (checksum, name, comment) {}

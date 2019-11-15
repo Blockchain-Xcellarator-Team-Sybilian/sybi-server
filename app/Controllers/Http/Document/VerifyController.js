@@ -1,10 +1,11 @@
 'use strict'
 
 const Config = use('Config')
-const Web3 = use('Web3Helper')
 const Helpers = use('Helpers')
+const KaleidoHelper = use('KaleidoHelper')
 const ResponseHelper = use('ResponseHelper')
 const GeneratorHelper = use('GeneratorHelper')
+var match
 
 class VerifyController {
   async verify ({ request, response }) {
@@ -26,17 +27,13 @@ class VerifyController {
 
     // Generate document checksum
     const documentChecksum = await GeneratorHelper.sha256(documentPath)
-    let match = false
 
-    // Process (for improvement)
-    try {
-      const documentFromBlockchain = await Web3.getDocument(documentChecksum)
-      const blockchainChecksum = documentFromBlockchain[0]
+    // Process
+    const blockchainChecksum = await KaleidoHelper.getDocument(documentChecksum)
 
-      if (documentChecksum == blockchainChecksum) {
-        match = true
-      }
-    } catch (e) {
+    if (documentChecksum == blockchainChecksum) {
+      match = true
+    } else if (blockchainChecksum == 'Document does not exists.') {
       match = false
     }
 
