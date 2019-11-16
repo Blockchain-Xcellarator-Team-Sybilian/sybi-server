@@ -22,7 +22,7 @@ class HelperProvider extends ServiceProvider {
       return new GeneratorHelper()
     }),
     this.app.bind('App/Helpers/DocumentHelper', () => {
-      return new DocumentHelper(use('GeneratorHelper'))
+      return new DocumentHelper()
     }),
     this.app.bind('App/Helpers/KaleidoHelper', () => {
       return new KaleidoHelper(use('Config'))
