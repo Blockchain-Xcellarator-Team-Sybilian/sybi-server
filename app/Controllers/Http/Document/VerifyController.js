@@ -25,13 +25,13 @@ class VerifyController {
       overwrite: true
     })
 
-    // Generate document checksum
-    const documentChecksum = await GeneratorHelper.sha256(documentPath)
+    // Upload to IPFS and get checksum
+    const ipfsDocument = await KaleidoHelper.uploadToIPFS(documentPath)
 
     // Process
-    const blockchainChecksum = await KaleidoHelper.getDocument(documentChecksum)
+    const blockchainChecksum = await KaleidoHelper.getDocument(ipfsDocument.Hash)
 
-    if (documentChecksum == blockchainChecksum) {
+    if (ipfsDocument.Hash == blockchainChecksum) {
       match = true
     } else if (blockchainChecksum == 'Document does not exists.') {
       match = false
